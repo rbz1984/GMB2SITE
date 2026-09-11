@@ -50,9 +50,9 @@ async function main() {
     console.log(`\n✔ Deployment complete!`);
     console.log(`  FQDN:         ${result.fqdn}`);
     console.log(`  Target path:  ${result.targetHtmlPath}`);
-    console.log(`  Provisioned:  ${result.provisioned ? 'Yes (via ngaw-domain)' : 'No (created folder directly)'}`);
-    if (result.ngawError) {
-      console.log(`  Notice:       ngaw-domain notice: ${result.ngawError}`);
+    console.log(`  Provisioned:  ${result.provisioned ? 'Yes (Nginx vhost + SSL enabled)' : 'Folder created (Nginx reload skipped or error)'}`);
+    if (result.provisionError) {
+      console.log(`  Notice:       Provision error: ${result.provisionError}`);
     }
     console.log(`  Live URL:     ${result.liveUrl}\n`);
   } catch (err) {
