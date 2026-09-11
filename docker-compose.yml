@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pagepilot
+    ports:
+      - "8210:8210"
+    environment:
+      - PORT=8210
+    env_file:
+      - .env
+    volumes:
+      - ./sites:/app/sites
+    restart: unless-stopped
