@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { execFile } from 'child_process';
 import { promisify } from 'util';
+import fetch from 'node-fetch';
 
 const execFileAsync = promisify(execFile);
 
@@ -32,6 +33,82 @@ export function getFqdn(businessName, customSubdomain = null) {
 export function getDocrootPath(domain, subdomain) {
   const webRootBase = process.env.WEB_ROOT_BASE || '/var/www';
   return path.join(webRootBase, domain, subdomain, 'public');
+}
+
+export function compileSiteForDomain(html, fqdn) {
+  const liveUrl = `https://${fqdn}`;
+  const canonicalTag = `<link rel="canonical" href="${liveUrl}/">`;
+  const ogUrlTag = `<meta property="og:url" content="${liveUrl}/">`;
+
+  let updated = html;
+  if (updated.includes('</head>')) {
+    updated = updated.replace('</head>', `  ${canonicalTag}\n  ${ogUrlTag}\n</head>`);
+  } else {
+    updated = `${canonicalTag}\n${ogUrlTag}\n${updated}`;
+  }
+  return updated;
+}
+
+export async function createCloudflareARecord({ fqdn, domain }) {
+  const token = process.env.CLOUDFLARE_API_TOKEN;
+  const ip = process.env.CLOUDFLARE_DEFAULT_IP;
+
+  if (!token || !ip) {
+    return { success: false, dnsCreated: false, error: 'CLOUDFLARE_API_TOKEN or CLOUDFLARE_DEFAULT_IP missing' };
+  }
+
+  try {
+    const zonesRes = await fetch(`https://api.cloudflare.com/client/v4/zones?name=${domain}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const zonesData = await zonesRes.json();
+    if (!zonesData.success || !zonesData.result || zonesData.result.length === 0) {
+      return { success: false, dnsCreated: false, error: `Cloudflare zone not found for ${domain}` };
+    }
+
+    const zoneId = zonesData.result[0].id;
+
+    const recordsRes = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records?type=A&name=${fqdn}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const recordsData = await recordsRes.json();
+    if (recordsData.success && recordsData.result && recordsData.result.length > 0) {
+      return { success: true, dnsCreated: true, existing: true, record: recordsData.result[0] };
+    }
+
+    const createRes = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        type: 'A',
+        name: fqdn,
+        content: ip,
+        ttl: 1,
+        proxied: true
+      })
+    });
+
+    const createData = await createRes.json();
+    if (createData.success) {
+      return { success: true, dnsCreated: true, record: createData.result };
+    } else {
+      return { success: false, dnsCreated: false, error: createData.errors?.[0]?.message || 'Failed to create A record' };
+    }
+
+  } catch (err) {
+    return { success: false, dnsCreated: false, error: err.message };
+  }
 }
 
 export async function deployToDomainFolder({ slug, businessName, domainInput, sourceHtmlPath }) {
@@ -71,8 +148,13 @@ export async function deployToDomainFolder({ slug, businessName, domainInput, so
     fs.mkdirSync(docroot, { recursive: true });
   }
 
+  const rawHtml = fs.readFileSync(sourceHtmlPath, 'utf-8');
+  const compiledHtml = compileSiteForDomain(rawHtml, fqdn);
+
   const targetHtmlPath = path.join(docroot, 'index.html');
-  fs.copyFileSync(sourceHtmlPath, targetHtmlPath);
+  fs.writeFileSync(targetHtmlPath, compiledHtml, 'utf-8');
+
+  const dnsResult = await createCloudflareARecord({ fqdn, domain: dom });
 
   return {
     success: true,
@@ -83,6 +165,8 @@ export async function deployToDomainFolder({ slug, businessName, domainInput, so
     targetHtmlPath,
     provisioned,
     ngawError,
+    dnsCreated: dnsResult.dnsCreated || false,
+    dnsResult,
     liveUrl: `https://${fqdn}`
   };
 }
