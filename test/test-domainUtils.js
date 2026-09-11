@@ -28,34 +28,60 @@ async function testSubdomainExtraction() {
 async function testDeployment() {
   console.log('\nTesting deployToDomainFolder...');
   const tmpRoot = path.join(__dirname, '..', 'sites', 'tmp-test-www');
+  const tmpNginxAvailable = path.join(tmpRoot, 'nginx', 'sites-available');
+  const tmpNginxEnabled = path.join(tmpRoot, 'nginx', 'sites-enabled');
+  const tmpCertDir = path.join(tmpRoot, 'ssl', 'certs');
+  const tmpKeyDir = path.join(tmpRoot, 'ssl', 'private');
+
   process.env.WEB_ROOT_BASE = tmpRoot;
   process.env.MAIN_DOMAIN = 'example.com';
-  process.env.NGAW_DOMAIN_BIN = '/nonexistent/ngaw-domain';
+  process.env.NGINX_AVAILABLE_DIR = tmpNginxAvailable;
+  process.env.NGINX_ENABLED_DIR = tmpNginxEnabled;
+  process.env.SSL_CERT_DIR = tmpCertDir;
+  process.env.SSL_KEY_DIR = tmpKeyDir;
+  process.env.SKIP_NGINX_PROVISION = 'true';
 
   const testSlug = 'royal-traders-and-hardware';
   const sourcePath = path.join(__dirname, '..', 'sites', `${testSlug}.html`);
 
   if (!fs.existsSync(sourcePath)) {
-    fs.writeFileSync(sourcePath, '<html><body>Test Site</body></html>', 'utf-8');
+    fs.writeFileSync(sourcePath, '<html><head><title>Test</title></head><body>Test Site</body></html>', 'utf-8');
   }
 
-  const result = await deployToDomainFolder({
+  // Test 1: Subdomain generated from business name
+  const result1 = await deployToDomainFolder({
     slug: testSlug,
     businessName: 'Mediterranean Foods Trattoria & Deli, Newtown',
     sourceHtmlPath: sourcePath
   });
 
-  console.log('  Result:', result);
-
-  if (result.subdomain !== 'mediterranean-foods') {
-    throw new Error(`Expected subdomain 'mediterranean-foods', got '${result.subdomain}'`);
+  if (result1.subdomain !== 'mediterranean-foods') {
+    throw new Error(`Expected subdomain 'mediterranean-foods', got '${result1.subdomain}'`);
   }
 
-  if (!fs.existsSync(result.targetHtmlPath)) {
-    throw new Error(`Target HTML file not found at ${result.targetHtmlPath}`);
+  if (!fs.existsSync(result1.targetHtmlPath)) {
+    throw new Error(`Target HTML file not found at ${result1.targetHtmlPath}`);
   }
 
-  console.log(`  ✔ Successfully copied HTML to ${result.targetHtmlPath}`);
+  console.log(`  ✔ Successfully deployed business site to ${result1.targetHtmlPath}`);
+
+  // Test 2: Full domain explicit input case (shop.example.com)
+  const result2 = await deployToDomainFolder({
+    slug: testSlug,
+    businessName: 'Custom Shop',
+    domainInput: 'shop.example.com',
+    sourceHtmlPath: sourcePath
+  });
+
+  if (result2.fqdn !== 'shop.example.com' || result2.subdomain !== 'shop') {
+    throw new Error(`Expected FQDN 'shop.example.com', got '${result2.fqdn}'`);
+  }
+
+  if (!fs.existsSync(result2.targetHtmlPath)) {
+    throw new Error(`Target HTML file for shop.example.com not found at ${result2.targetHtmlPath}`);
+  }
+
+  console.log(`  ✔ Successfully deployed explicit FQDN site to ${result2.targetHtmlPath}`);
 
   // Cleanup tmp test directory
   fs.rmSync(tmpRoot, { recursive: true, force: true });
