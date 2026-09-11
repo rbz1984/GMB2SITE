@@ -4,3 +4,4 @@ sites/*.html
 !sites/.gitkeep
 .DS_Store
 *.log
+api-usage.json
