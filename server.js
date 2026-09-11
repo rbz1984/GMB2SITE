@@ -365,6 +365,15 @@ app.get('/api/status', (req, res) => {
   });
 });
 
+// GET /api/config -> System & domain configuration check
+app.get('/api/config', (req, res) => {
+  res.json({
+    mainDomain: process.env.MAIN_DOMAIN || 'pagepilot.sites',
+    webRootBase: process.env.WEB_ROOT_BASE || '/var/www',
+    cloudflareConfigured: Boolean(process.env.CLOUDFLARE_API_TOKEN && process.env.CLOUDFLARE_DEFAULT_IP)
+  });
+});
+
 // GET /api/admin/usage -> Fetch live API usage for SerpAPI & Google AI Studio (Protected)
 app.get('/api/admin/usage', requireAdmin, async (req, res) => {
   try {
@@ -584,6 +593,8 @@ app.post('/api/publish', requireAdmin, async (req, res) => {
       subdomain: result.subdomain,
       docroot: result.docroot,
       provisioned: result.provisioned,
+      dnsCreated: result.dnsCreated,
+      dnsResult: result.dnsResult,
       ssl: true,
       publishedAt: new Date().toISOString()
     });
