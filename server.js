@@ -12,6 +12,7 @@ import { generateContent } from './generator/generateContent.js';
 import { buildSite } from './generator/buildSite.js';
 import { slugify } from './generator/slugify.js';
 import { getUsageData } from './generator/apiUsageTracker.js';
+import { deployToDomainFolder, extractSubdomain } from './generator/domainUtils.js';
 
 dotenv.config();
 
@@ -546,23 +547,49 @@ app.post('/api/sites/:slug/save', requireAdmin, (req, res) => {
 });
 
 // POST /api/publish -> Publish website to live custom domain / sub-domain (Protected)
-app.post('/api/publish', requireAdmin, (req, res) => {
+app.post('/api/publish', requireAdmin, async (req, res) => {
   const { slug, domain } = req.body;
   if (!slug) {
     return res.status(400).json({ success: false, error: 'Missing slug' });
   }
 
-  const liveDomain = domain && domain.trim() ? domain.trim() : `${slug}.pagepilot.sites`;
-  const liveUrl = `https://${liveDomain}`;
+  const filePath = path.join(SITES_DIR, `${slug}.html`);
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ success: false, error: 'Site not found' });
+  }
 
-  res.json({
-    success: true,
-    slug,
-    publishedUrl: liveUrl,
-    domain: liveDomain,
-    ssl: true,
-    publishedAt: new Date().toISOString()
-  });
+  let businessName = slug;
+  try {
+    const html = fs.readFileSync(filePath, 'utf-8');
+    const titleMatch = html.match(/<div class="nav-brand">([^<]+)<\/div>/i) || html.match(/<title>([^<]+)<\/title>/i);
+    if (titleMatch) {
+      businessName = titleMatch[1].split('—')[0].split('|')[0].trim();
+    }
+  } catch (_) {}
+
+  try {
+    const result = await deployToDomainFolder({
+      slug,
+      businessName,
+      domainInput: domain,
+      sourceHtmlPath: filePath
+    });
+
+    return res.json({
+      success: true,
+      slug,
+      publishedUrl: result.liveUrl,
+      fqdn: result.fqdn,
+      domain: result.domain,
+      subdomain: result.subdomain,
+      docroot: result.docroot,
+      provisioned: result.provisioned,
+      ssl: true,
+      publishedAt: new Date().toISOString()
+    });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // POST /api/generate -> Main generation endpoint
