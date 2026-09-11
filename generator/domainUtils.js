@@ -1,10 +1,11 @@
 // generator/domainUtils.js
 import fs from 'fs';
 import path from 'path';
-import { execFile } from 'child_process';
+import { exec, execFile } from 'child_process';
 import { promisify } from 'util';
 import fetch from 'node-fetch';
 
+const execAsync = promisify(exec);
 const execFileAsync = promisify(execFile);
 
 export function extractSubdomain(businessName = '') {
@@ -115,7 +116,12 @@ export async function deployToDomainFolder({ slug, businessName, domainInput, so
   const mainDomain = process.env.MAIN_DOMAIN || 'pagepilot.sites';
   const webRootBase = process.env.WEB_ROOT_BASE || '/var/www';
   const webUser = process.env.WEB_USER || 'www-data';
-  const ngawBin = process.env.NGAW_DOMAIN_BIN || 'ngaw-domain';
+
+  const nginxAvailableDir = process.env.NGINX_AVAILABLE_DIR || '/etc/nginx/sites-available';
+  const nginxEnabledDir = process.env.NGINX_ENABLED_DIR || '/etc/nginx/sites-enabled';
+  const sslCertDir = process.env.SSL_CERT_DIR || '/etc/ssl/certs';
+  const sslKeyDir = process.env.SSL_KEY_DIR || '/etc/ssl/private';
+  const skipNginx = process.env.SKIP_NGINX_PROVISION === 'true';
 
   let fqdn = '';
   let sub = '';
@@ -134,23 +140,6 @@ export async function deployToDomainFolder({ slug, businessName, domainInput, so
 
   const docroot = path.join(webRootBase, dom, sub, 'public');
 
-  let provisioned = false;
-  let ngawError = null;
-
-  console.log(`[ngaw-domain] Attempting execution: ${ngawBin} ${fqdn} ${webUser} -y`);
-  try {
-    const { stdout, stderr } = await execFileAsync(ngawBin, [fqdn, webUser, '-y'], {
-      env: process.env,
-      shell: true
-    });
-    provisioned = true;
-    console.log(`[ngaw-domain] SUCCESS output for ${fqdn}:\n${stdout}`);
-    if (stderr) console.warn(`[ngaw-domain] STDERR for ${fqdn}:\n${stderr}`);
-  } catch (err) {
-    ngawError = err.stderr ? `${err.message}\n${err.stderr}` : err.message;
-    console.error(`[ngaw-domain] EXECUTION ERROR for ${fqdn}:`, ngawError);
-  }
-
   if (!fs.existsSync(docroot)) {
     fs.mkdirSync(docroot, { recursive: true });
   }
@@ -160,6 +149,93 @@ export async function deployToDomainFolder({ slug, businessName, domainInput, so
 
   const targetHtmlPath = path.join(docroot, 'index.html');
   fs.writeFileSync(targetHtmlPath, compiledHtml, 'utf-8');
+
+  try {
+    await execFileAsync('chown', ['-R', `${webUser}:${webUser}`, docroot]);
+  } catch (_) {}
+
+  let provisioned = false;
+  let certCreated = false;
+  let vhostPath = null;
+  let provisionError = null;
+
+  if (!skipNginx) {
+    try {
+      if (!fs.existsSync(sslCertDir)) fs.mkdirSync(sslCertDir, { recursive: true });
+      if (!fs.existsSync(sslKeyDir)) fs.mkdirSync(sslKeyDir, { recursive: true });
+      if (!fs.existsSync(nginxAvailableDir)) fs.mkdirSync(nginxAvailableDir, { recursive: true });
+      if (!fs.existsSync(nginxEnabledDir)) fs.mkdirSync(nginxEnabledDir, { recursive: true });
+
+      const certPath = path.join(sslCertDir, `${fqdn}-selfsigned.crt`);
+      const keyPath = path.join(sslKeyDir, `${fqdn}-selfsigned.key`);
+
+      if (!fs.existsSync(certPath) || !fs.existsSync(keyPath)) {
+        await execFileAsync('openssl', [
+          'req', '-x509', '-nodes',
+          '-newkey', 'rsa:2048',
+          '-days', '3650',
+          '-subj', `/CN=${fqdn}`,
+          '-out', certPath,
+          '-keyout', keyPath
+        ]);
+        certCreated = true;
+      }
+
+      vhostPath = path.join(nginxAvailableDir, `${fqdn}.conf`);
+      const vhostConfig = `server {
+    listen 80;
+    listen [::]:80;
+    server_name ${fqdn};
+    return 301 https://\$host\$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name ${fqdn};
+
+    root ${docroot};
+    index index.html;
+
+    ssl_certificate ${certPath};
+    ssl_certificate_key ${keyPath};
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    access_log /var/log/nginx/${fqdn}.access.log json_logs;
+    error_log /var/log/nginx/${fqdn}.error.log;
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+
+    location ~ /\. {
+        deny all;
+    }
+}
+`;
+
+      fs.writeFileSync(vhostPath, vhostConfig, 'utf-8');
+
+      const enabledPath = path.join(nginxEnabledDir, `${fqdn}.conf`);
+      if (!fs.existsSync(enabledPath)) {
+        try {
+          fs.symlinkSync(vhostPath, enabledPath);
+        } catch (err) {
+          if (err.code !== 'EEXIST') throw err;
+        }
+      }
+
+      await execFileAsync('nginx', ['-t']);
+      const reloadCmd = process.env.NGINX_RELOAD_CMD || 'systemctl reload nginx';
+      await execAsync(reloadCmd);
+      provisioned = true;
+
+    } catch (err) {
+      provisionError = err.stderr ? `${err.message}\n${err.stderr}` : err.message;
+      console.error(`[nginx-provision] Error for ${fqdn}:`, provisionError);
+    }
+  }
 
   const dnsResult = await createCloudflareARecord({ fqdn, domain: dom });
 
@@ -171,7 +247,9 @@ export async function deployToDomainFolder({ slug, businessName, domainInput, so
     docroot,
     targetHtmlPath,
     provisioned,
-    ngawError,
+    certCreated,
+    vhostPath,
+    provisionError,
     dnsCreated: dnsResult.dnsCreated || false,
     dnsResult,
     liveUrl: `https://${fqdn}`
