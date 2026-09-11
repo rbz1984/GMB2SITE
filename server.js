@@ -593,6 +593,7 @@ app.post('/api/publish', requireAdmin, async (req, res) => {
       subdomain: result.subdomain,
       docroot: result.docroot,
       provisioned: result.provisioned,
+      ngawError: result.ngawError,
       dnsCreated: result.dnsCreated,
       dnsResult: result.dnsResult,
       ssl: true,

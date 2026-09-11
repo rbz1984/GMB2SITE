@@ -137,15 +137,18 @@ export async function deployToDomainFolder({ slug, businessName, domainInput, so
   let provisioned = false;
   let ngawError = null;
 
+  console.log(`[ngaw-domain] Attempting execution: ${ngawBin} ${fqdn} ${webUser} -y`);
   try {
     const { stdout, stderr } = await execFileAsync(ngawBin, [fqdn, webUser, '-y'], {
-      env: process.env
+      env: process.env,
+      shell: true
     });
     provisioned = true;
-    console.log(`[ngaw-domain] Execution output for ${fqdn}:\n${stdout}`);
+    console.log(`[ngaw-domain] SUCCESS output for ${fqdn}:\n${stdout}`);
+    if (stderr) console.warn(`[ngaw-domain] STDERR for ${fqdn}:\n${stderr}`);
   } catch (err) {
-    ngawError = err.message;
-    console.warn(`[ngaw-domain] Could not execute binary ${ngawBin}:`, err.message);
+    ngawError = err.stderr ? `${err.message}\n${err.stderr}` : err.message;
+    console.error(`[ngaw-domain] EXECUTION ERROR for ${fqdn}:`, ngawError);
   }
 
   if (!fs.existsSync(docroot)) {
