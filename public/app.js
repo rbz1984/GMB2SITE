@@ -1374,13 +1374,26 @@ if (btnSaveEditor) {
 
 // ── 7. PUBLISH MODAL ──
 
+let systemMainDomain = 'amolw.xyz';
+
+async function fetchSystemConfig() {
+  try {
+    const res = await fetch('/api/config');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.mainDomain) systemMainDomain = data.mainDomain;
+    }
+  } catch (_) {}
+}
+fetchSystemConfig();
+
 window.openPublishModal = function(slug) {
   currentPublishingSlug = slug;
   publishModal.classList.remove('hidden');
   deploySuccessBox.classList.add('hidden');
 
   publishSiteName.textContent = `/sites/${slug}`;
-  publishDefaultUrl.textContent = `https://${slug}.pagepilot.sites`;
+  publishDefaultUrl.textContent = `https://${slug}.${systemMainDomain}`;
   publishDomainInput.value = '';
 };
 
@@ -1418,8 +1431,10 @@ if (btnConfirmPublish) {
       const result = await res.json();
       if (result.success) {
         deploySuccessBox.classList.remove('hidden');
-        deployedLiveLink.textContent = `${result.publishedUrl} ↗`;
-        deployedLiveLink.href = `/sites/${currentPublishingSlug}`;
+        const displayUrl = result.publishedUrl || `https://${result.fqdn || currentPublishingSlug + '.' + systemMainDomain}`;
+        deployedLiveLink.textContent = `${displayUrl} ↗`;
+        deployedLiveLink.href = displayUrl;
+        deployedLiveLink.target = '_blank';
         btnConfirmPublish.textContent = 'Published ✓';
       }
     } catch (err) {
