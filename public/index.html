@@ -1,0 +1,3119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PagePilot — Turn Your Google Listing into a Website</title>
+  <meta name="description" content="Import your Google Business profile and let PagePilot create a professional, mobile-ready website with your business details, photos, reviews and contact information in seconds.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=7">
+</head>
+<body>
+  <!-- Ambient Background Glow Elements -->
+  <div class="glow-orb glow-top-left" aria-hidden="true"></div>
+  <div class="glow-orb glow-top-right" aria-hidden="true"></div>
+  <div class="glow-orb glow-center" aria-hidden="true"></div>
+
+  <!-- ── TOP NAVIGATION BAR ── -->
+  <header class="navbar-container">
+    <nav class="navbar" aria-label="Main Navigation">
+      <div class="nav-left">
+        <a href="#" class="brand-logo" id="logo-home">
+          <div class="brand-symbol">✦</div>
+          <span class="brand-text">Page<span class="brand-gradient">Pilot</span></span>
+        </a>
+      </div>
+
+      <div class="nav-center" id="nav-menu">
+        <a href="#how-it-works" class="nav-item">How it works</a>
+        <a href="#preview-example" class="nav-item">Examples</a>
+        <a href="#features" class="nav-item">Features</a>
+        <a href="#templates" class="nav-item">Templates</a>
+        <a href="#pricing" class="nav-item">Pricing</a>
+      </div>
+
+      <div class="nav-right" id="nav-auth-container">
+        <button type="button" class="btn-ghost" id="btn-login-modal">
+          <span class="auth-icon">🔒</span>
+          <span>Admin Login</span>
+        </button>
+        <div class="admin-nav-pill hidden" id="nav-admin-badge">
+          <button type="button" class="admin-badge-btn" id="btn-admin-go-dashboard" title="Open Admin Dashboard">
+            <span class="admin-indicator-dot"></span>
+            <span class="admin-badge-text">Dashboard</span>
+          </button>
+          <button type="button" class="btn-nav-logout" id="btn-nav-logout" title="Log out">Sign out</button>
+        </div>
+        <a href="#generator-section" class="btn-nav-action" id="btn-nav-create">
+          <span>Create website</span>
+          <span class="arrow-icon">→</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 1. LANDING PAGE VIEW                      -->
+  <!-- ══════════════════════════════════════════ -->
+  <div id="view-landing" class="view-active">
+    
+    <!-- ── HERO SECTION ── -->
+    <section class="hero-section" id="hero">
+      <div class="hero-container">
+        <div class="hero-badge">
+          <span class="badge-sparkle">✦</span>
+          <span>AI WEBSITE BUILDER FOR LOCAL BUSINESSES</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Turn your Google listing into a <span class="gradient-text">website.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Import your business profile and let PagePilot create a professional, mobile-ready website with your business details, photos, reviews and contact information.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#generator-section" class="btn-cta-primary" id="hero-create-btn">
+            <span>Create my website</span>
+            <span class="arrow-move">→</span>
+          </a>
+          <a href="#preview-example" class="btn-cta-secondary">
+            <span>See an example</span>
+          </a>
+        </div>
+
+        <div class="trust-points">
+          <div class="trust-point">
+            <span class="trust-check">✓</span>
+            <span>No coding</span>
+          </div>
+          <div class="trust-separator">·</div>
+          <div class="trust-point">
+            <span class="trust-check">✓</span>
+            <span>AI powered</span>
+          </div>
+          <div class="trust-separator">·</div>
+          <div class="trust-point">
+            <span class="trust-check">✓</span>
+            <span>Mobile ready</span>
+          </div>
+          <div class="trust-separator">·</div>
+          <div class="trust-point">
+            <span class="trust-check">✓</span>
+            <span>Ready to publish</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AI GENERATOR INTERFACE ── -->
+    <section class="generator-section" id="generator-section">
+      <div class="generator-wrapper">
+        <div class="generator-card">
+          <div class="generator-header">
+            <div class="generator-title-row">
+              <label for="gmb-input" class="generator-label">Google Maps URL or Place ID</label>
+              <span class="demo-badge hidden" id="demo-mode-indicator">✦ Demo Mode</span>
+            </div>
+          </div>
+
+          <div class="input-container">
+            <div class="input-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <input 
+              type="text" 
+              id="gmb-input" 
+              placeholder="https://maps.google.com/... or ChIJ..."
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button id="generate-btn" class="btn-generate">
+              <span class="btn-text">Generate website</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </div>
+
+          <div class="generator-footer-row">
+            <p class="generator-helper">
+              We'll automatically organize your business information, photos, reviews and location.
+            </p>
+            <div class="sample-pills">
+              <span class="sample-title">Quick demo:</span>
+              <button type="button" class="sample-pill sample-primary" data-query="Royal Traders & Hardware">
+                ✦ Royal Traders & Hardware
+              </button>
+              <button type="button" class="sample-pill" data-query="ChIJp4JiUCNP0xQR1JaSjpW_Hms">
+                India Restaurant
+              </button>
+              <button type="button" class="sample-pill" data-query="https://maps.google.com/?cid=12648873406560942487">
+                Sayaji Hotel
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated Generation Progress Card -->
+        <div id="status-area" class="status-card-modern hidden" aria-live="polite">
+          <div class="progress-header-row">
+            <div class="progress-title-box">
+              <div class="progress-spinner-ring"></div>
+              <h3 class="progress-heading" id="progress-heading-text">Building your website</h3>
+            </div>
+            <div class="progress-percentage-pill" id="progress-percent">0%</div>
+          </div>
+
+          <div class="overall-progress-track">
+            <div class="overall-progress-bar" id="overall-bar" style="width: 0%;"></div>
+          </div>
+
+          <div class="generation-steps-list" id="generation-steps-container">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+        </div>
+
+        <!-- Generation Result Card -->
+        <div id="result-card" class="result-card-modern hidden" aria-live="polite">
+          <!-- Injected dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LARGE VISUAL WEBSITE PREVIEW (ROYAL TRADERS & HARDWARE) ── -->
+    <section class="preview-section" id="preview-example">
+      <div class="preview-header">
+        <div class="section-tag">LIVE PREVIEW</div>
+        <h2 class="section-title">See what PagePilot builds in seconds</h2>
+        <p class="section-subtitle">
+          Generated directly from a Google Business Profile with zero manual design work.
+        </p>
+      </div>
+
+      <!-- Subtle Visual Conversion Story Flow -->
+      <div class="conversion-story-bar">
+        <div class="story-step">
+          <span class="story-icon">📍</span>
+          <span class="story-text">Google Business Profile</span>
+        </div>
+        <div class="story-connector">
+          <span class="connector-arrow">→</span>
+        </div>
+        <div class="story-step story-step-ai">
+          <span class="story-icon">✦</span>
+          <span class="story-text">PagePilot AI</span>
+        </div>
+        <div class="story-connector">
+          <span class="connector-arrow">→</span>
+        </div>
+        <div class="story-step story-step-site">
+          <span class="story-icon">🌐</span>
+          <span class="story-text">Professional Website</span>
+        </div>
+      </div>
+
+      <div class="browser-frame">
+        <!-- Browser Chrome -->
+        <div class="browser-chrome">
+          <div class="window-controls">
+            <span class="win-btn win-close"></span>
+            <span class="win-btn win-minimize"></span>
+            <span class="win-btn win-maximize"></span>
+          </div>
+          <div class="browser-nav-arrows">
+            <span class="nav-arrow">‹</span>
+            <span class="nav-arrow">›</span>
+          </div>
+          <div class="browser-address-bar">
+            <svg class="lock-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span class="address-url">pagepilot.io/sites/royal-traders-and-hardware</span>
+            <span class="address-status">● Live</span>
+          </div>
+          <div class="browser-actions">
+            <a href="/sites/royal-traders-and-hardware" target="_blank" class="browser-external-link">
+              <span>Open in Full Screen</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Rendered Website Preview Interior -->
+        <div class="browser-content">
+          <!-- Mini Nav -->
+          <div class="mock-nav">
+            <div class="mock-brand">
+              <span class="mock-logo-dot"></span>
+              <strong>Royal Traders &amp; Hardware</strong>
+            </div>
+            <div class="mock-nav-links">
+              <span>Products</span>
+              <span>About</span>
+              <span>Reviews</span>
+              <span>Location</span>
+            </div>
+            <div class="mock-nav-cta">
+              <span class="mock-phone-pill">📞 +91 98250 12345</span>
+            </div>
+          </div>
+
+          <!-- Mini Hero -->
+          <div class="mock-hero">
+            <div class="mock-badge">✦ Hardware &amp; Industrial Supply</div>
+            <h2 class="mock-hero-title">Royal Traders &amp; Hardware</h2>
+            <div class="mock-rating-badge">
+              <span class="stars">★★★★★</span>
+              <strong>4.8</strong>
+              <span class="rev-count">(128 Google reviews)</span>
+            </div>
+            <p class="mock-hero-sub">
+              Vadodara's premier destination for heavy-duty power tools, high-tensile industrial fasteners, electrical switchgear, and precision plumbing supplies.
+            </p>
+            <div class="mock-hero-btns">
+              <span class="mock-btn-pri">Call +91 98250 12345</span>
+              <span class="mock-btn-sec">Get Directions</span>
+              <span class="mock-btn-sec">Request Quote</span>
+            </div>
+          </div>
+
+          <!-- Mini Gallery Grid -->
+          <div class="mock-gallery">
+            <div class="mock-gallery-card">
+              <img src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=600" alt="Power Tools" loading="lazy" referrerpolicy="no-referrer">
+              <div class="mock-gallery-overlay">Power Tools</div>
+            </div>
+            <div class="mock-gallery-card">
+              <img src="/fasteners-bolts.jpg" alt="Fasteners &amp; Bolts" loading="lazy">
+              <div class="mock-gallery-overlay">Fasteners &amp; Bolts</div>
+            </div>
+            <div class="mock-gallery-card">
+              <img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=600" alt="Workshop Equipment" loading="lazy" referrerpolicy="no-referrer">
+              <div class="mock-gallery-overlay">Safety Equipment</div>
+            </div>
+            <div class="mock-gallery-card">
+              <img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=600" alt="Plumbing" loading="lazy" referrerpolicy="no-referrer">
+              <div class="mock-gallery-overlay">Pipe Fittings</div>
+            </div>
+          </div>
+
+          <!-- Mini Services -->
+          <div class="mock-services-section">
+            <div class="mock-section-label">PRODUCTS &amp; CATEGORIES</div>
+            <div class="mock-services-grid">
+              <div class="mock-service-box">
+                <span class="box-icon">⚡</span>
+                <h4>Heavy-Duty Power Tools</h4>
+                <p>Bosch, Makita, and DeWalt industrial drills, angle grinders, and cordless cutters.</p>
+              </div>
+              <div class="mock-service-box">
+                <span class="box-icon">🔩</span>
+                <h4>Industrial Fasteners &amp; Bolts</h4>
+                <p>High-tensile Grade 8.8 bolts, SS 304/316 nuts, anchors, and threaded rods.</p>
+              </div>
+              <div class="mock-service-box">
+                <span class="box-icon">🛡️</span>
+                <h4>Electrical &amp; Safety Supplies</h4>
+                <p>Industrial cabling, switchgear, MCBs, safety helmets, and cut-resistant gloves.</p>
+              </div>
+              <div class="mock-service-box">
+                <span class="box-icon">🔧</span>
+                <h4>Precision Plumbing &amp; Valves</h4>
+                <p>PPR, CPVC, GI pipe fittings, ball valves, and industrial pressure flanges.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini Reviews -->
+          <div class="mock-reviews-strip">
+            <div class="mock-review-card">
+              <div class="rev-header">
+                <strong>Rajesh Mistry</strong>
+                <span class="rev-stars">★★★★★</span>
+              </div>
+              <p>"Best place in Makarpura GIDC for industrial power tools. Always have genuine spare parts."</p>
+            </div>
+            <div class="mock-review-card">
+              <div class="rev-header">
+                <strong>Kiran Parmar</strong>
+                <span class="rev-stars">★★★★★</span>
+              </div>
+              <p>"Wholesale prices and very knowledgeable staff. Provided high-tensile fasteners on same-day notice."</p>
+            </div>
+            <div class="mock-review-card">
+              <div class="rev-header">
+                <strong>Snehal Desai</strong>
+                <span class="rev-stars">★★★★★</span>
+              </div>
+              <p>"Top tier hardware store in Vadodara. Excellent quality brass fittings and electrical switches."</p>
+            </div>
+          </div>
+
+          <!-- Mini Map / Hours Footer -->
+          <div class="mock-location-footer">
+            <div class="mock-info-item">
+              <span class="info-icon">📍</span>
+              <div>
+                <strong>Location</strong>
+                <p>Plot 42, GIDC Industrial Estate, Makarpura, Vadodara, Gujarat 390010</p>
+              </div>
+            </div>
+            <div class="mock-info-item">
+              <span class="info-icon">⏰</span>
+              <div>
+                <strong>Business Hours</strong>
+                <p>Monday – Saturday: 9:00 AM – 8:00 PM (Sunday Closed)</p>
+              </div>
+            </div>
+            <div class="mock-info-item">
+              <span class="info-icon">📞</span>
+              <div>
+                <strong>Direct Contact</strong>
+                <p>+91 98250 12345 · Wholesale &amp; Retail Counter</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS SECTION ── -->
+    <section class="how-section" id="how-it-works">
+      <div class="section-intro">
+        <div class="section-tag">STREAMLINED WORKFLOW</div>
+        <h2 class="section-title">How it works</h2>
+        <p class="section-subtitle">
+          Turn your Google Business Profile into a fully deployed website in four simple steps.
+        </p>
+      </div>
+
+      <div class="steps-flow-grid">
+        <div class="flow-step-card">
+          <div class="step-badge">01</div>
+          <div class="step-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </div>
+          <h3>Import your business</h3>
+          <p>Paste any Google Maps business URL or search by Place ID. PagePilot extracts your authentic profile data instantly.</p>
+        </div>
+
+        <div class="flow-step-card">
+          <div class="step-badge">02</div>
+          <div class="step-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3>PagePilot builds your site</h3>
+          <p>Intelligent AI synthesizes high-converting copy, arranges high-res photo galleries, and formats customer reviews.</p>
+        </div>
+
+        <div class="flow-step-card">
+          <div class="step-badge">03</div>
+          <div class="step-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </div>
+          <h3>Customize your design</h3>
+          <p>Use the integrated visual editor to fine-tune headlines, adjust contact details, or select your preferred color palette.</p>
+        </div>
+
+        <div class="flow-step-card">
+          <div class="step-badge">04</div>
+          <div class="step-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <h3>Publish</h3>
+          <p>Go live in one click with custom domain support, blazing-fast edge hosting, and complete mobile optimization.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EVERYTHING YOUR BUSINESS ALREADY HAS ── -->
+    <section class="features-section" id="features">
+      <div class="section-intro">
+        <div class="section-tag">COMPREHENSIVE DATA EXTRACTION</div>
+        <h2 class="section-title">Everything your business already has</h2>
+        <p class="section-subtitle">
+          Your Google profile already contains the essential assets needed for a high-converting website.
+        </p>
+      </div>
+
+      <div class="features-quad-grid">
+        <div class="feature-card">
+          <div class="feature-header">
+            <span class="feature-icon">🏢</span>
+            <h3>Business information</h3>
+          </div>
+          <p class="feature-desc">All verified core business credentials synced seamlessly:</p>
+          <div class="visual-chips-preview">
+            <span class="ui-chip">📍 Makarpura, Vadodara</span>
+            <span class="ui-chip">☎ +91 98250 12345</span>
+            <span class="ui-chip">🕐 9:00 AM – 8:00 PM</span>
+            <span class="ui-chip">🏪 Hardware &amp; Industrial</span>
+          </div>
+          <ul class="feature-checklist">
+            <li><span class="bullet">✦</span> Name &amp; category classification</li>
+            <li><span class="bullet">✦</span> Direct telephone &amp; click-to-call</li>
+            <li><span class="bullet">✦</span> Full physical address &amp; postal code</li>
+            <li><span class="bullet">✦</span> Real-time hours &amp; hotel check-in/out</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-header">
+            <span class="feature-icon">⭐</span>
+            <h3>Social proof</h3>
+          </div>
+          <p class="feature-desc">Leverage your established local reputation to win new customers:</p>
+          <div class="visual-rating-box">
+            <div class="rating-badge-large">
+              <span class="rate-num">4.8</span>
+              <span class="rate-star">★</span>
+            </div>
+            <div class="rating-info-col">
+              <strong>128 Verified Google Reviews</strong>
+              <div class="rating-progress-bar">
+                <div class="rating-progress-fill" style="width: 96%;"></div>
+              </div>
+            </div>
+          </div>
+          <ul class="feature-checklist">
+            <li><span class="bullet">✦</span> Aggregate star rating display</li>
+            <li><span class="bullet">✦</span> Authentic verified customer reviews</li>
+            <li><span class="bullet">✦</span> Highlighted customer testimonials</li>
+            <li><span class="bullet">✦</span> Direct link to Google Maps feedback</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-header">
+            <span class="feature-icon">📸</span>
+            <h3>Visual content</h3>
+          </div>
+          <p class="feature-desc">Rich visual showcase pulled directly from your listing:</p>
+          <div class="visual-thumbs-strip">
+            <img src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=200" alt="Tool" loading="lazy" referrerpolicy="no-referrer">
+            <img src="/fasteners-bolts.jpg" alt="Fastener" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=200" alt="Workshop" loading="lazy" referrerpolicy="no-referrer">
+            <img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=200" alt="Pipes" loading="lazy" referrerpolicy="no-referrer">
+          </div>
+          <ul class="feature-checklist">
+            <li><span class="bullet">✦</span> High-resolution photo galleries</li>
+            <li><span class="bullet">✦</span> Responsive zoom &amp; masonry grids</li>
+            <li><span class="bullet">✦</span> Business logo &amp; storefront imagery</li>
+            <li><span class="bullet">✦</span> Hotlink-protected edge delivery</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-header">
+            <span class="feature-icon">📍</span>
+            <h3>Local discovery</h3>
+          </div>
+          <p class="feature-desc">Make it effortless for nearby customers to visit you:</p>
+          <div class="visual-map-box">
+            <div class="map-pin-pulse">📍</div>
+            <div class="map-text-col">
+              <strong>Plot 42, GIDC Industrial Estate</strong>
+              <span>Makarpura, Vadodara · 2.4 km away</span>
+            </div>
+            <span class="map-directions-badge">Directions ↗</span>
+          </div>
+          <ul class="feature-checklist">
+            <li><span class="bullet">✦</span> Interactive Google Maps integration</li>
+            <li><span class="bullet">✦</span> Turn-by-turn navigation directions</li>
+            <li><span class="bullet">✦</span> Precise GPS coordinates &amp; landmarks</li>
+            <li><span class="bullet">✦</span> Clear service radius &amp; neighborhood tags</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TEMPLATES & CATEGORIES ── -->
+    <section class="templates-section" id="templates">
+      <div class="section-intro">
+        <div class="section-tag">TAILORED INDUSTRY DESIGNS</div>
+        <h2 class="section-title">Designed for every local industry</h2>
+        <p class="section-subtitle">
+          PagePilot automatically selects typography, color palettes, and layouts suited to your category.
+        </p>
+      </div>
+
+      <div class="templates-grid">
+        <div class="template-card">
+          <div class="template-thumb thumb-business">
+            <div class="mini-browser-bar">
+              <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+              <span class="mini-url">apex-industrial.com</span>
+            </div>
+            <div class="mini-site-layout">
+              <div class="mini-header-row">
+                <span class="mini-logo-mark">APEX</span>
+                <span class="mini-btn-chip">Quote ↗</span>
+              </div>
+              <div class="mini-hero-block">
+                <div class="mini-headline">Precision Industrial &amp; Tooling Systems</div>
+                <div class="mini-cta-row">
+                  <span class="mini-pill-pri">Catalog</span>
+                  <span class="mini-pill-sec">Specs</span>
+                </div>
+              </div>
+            </div>
+            <span class="template-badge">Modern Business</span>
+          </div>
+          <div class="template-body">
+            <h4>Modern Business &amp; Industrial</h4>
+            <p>Sleek, authoritative layouts for manufacturers, suppliers, and distributors.</p>
+            <div class="template-meta">
+              <span class="color-dot" style="background:#3b82f6;"></span>
+              <span class="color-dot" style="background:#0ea5e9;"></span>
+              <span class="color-dot" style="background:#1e293b;"></span>
+              <span class="font-tag">Inter + Display</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card">
+          <div class="template-thumb thumb-restaurant">
+            <div class="mini-browser-bar">
+              <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+              <span class="mini-url">trattoriabella.dining</span>
+            </div>
+            <div class="mini-site-layout">
+              <div class="mini-header-row">
+                <span class="mini-logo-mark">BELLA</span>
+                <span class="mini-btn-chip">Table ↗</span>
+              </div>
+              <div class="mini-hero-block">
+                <div class="mini-headline">Wood-Fired Pizza &amp; Handmade Pasta</div>
+                <div class="mini-cta-row">
+                  <span class="mini-pill-pri">View Menu</span>
+                  <span class="mini-pill-sec">Reserve</span>
+                </div>
+              </div>
+            </div>
+            <span class="template-badge">Restaurant &amp; Cafe</span>
+          </div>
+          <div class="template-body">
+            <h4>Restaurant &amp; Dining</h4>
+            <p>Appetizing imagery layouts with menu highlights and quick reservation CTAs.</p>
+            <div class="template-meta">
+              <span class="color-dot" style="background:#f59e0b;"></span>
+              <span class="color-dot" style="background:#ef4444;"></span>
+              <span class="color-dot" style="background:#27272a;"></span>
+              <span class="font-tag">Warm + Serif</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card">
+          <div class="template-thumb thumb-salon">
+            <div class="mini-browser-bar">
+              <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+              <span class="mini-url">lumiere-spa.salon</span>
+            </div>
+            <div class="mini-site-layout">
+              <div class="mini-header-row">
+                <span class="mini-logo-mark">LUMIÈRE</span>
+                <span class="mini-btn-chip">Book ↗</span>
+              </div>
+              <div class="mini-hero-block">
+                <div class="mini-headline">Organic Skincare &amp; Hair Artistry</div>
+                <div class="mini-cta-row">
+                  <span class="mini-pill-pri">Services</span>
+                  <span class="mini-pill-sec">Pricing</span>
+                </div>
+              </div>
+            </div>
+            <span class="template-badge">Salon &amp; Wellness</span>
+          </div>
+          <div class="template-body">
+            <h4>Salon &amp; Aesthetics</h4>
+            <p>Minimalist, elegant presentation for spas, hair salons, and skincare studios.</p>
+            <div class="template-meta">
+              <span class="color-dot" style="background:#ec4899;"></span>
+              <span class="color-dot" style="background:#f43f5e;"></span>
+              <span class="color-dot" style="background:#18181b;"></span>
+              <span class="font-tag">Luxury Serif</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card">
+          <div class="template-thumb thumb-retail">
+            <div class="mini-browser-bar">
+              <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+              <span class="mini-url">nordic-living.shop</span>
+            </div>
+            <div class="mini-site-layout">
+              <div class="mini-header-row">
+                <span class="mini-logo-mark">NORDIC</span>
+                <span class="mini-btn-chip">Shop ↗</span>
+              </div>
+              <div class="mini-hero-block">
+                <div class="mini-headline">Handcrafted Furniture &amp; Interior Decor</div>
+                <div class="mini-cta-row">
+                  <span class="mini-pill-pri">Collection</span>
+                  <span class="mini-pill-sec">Visit</span>
+                </div>
+              </div>
+            </div>
+            <span class="template-badge">Retail &amp; Boutique</span>
+          </div>
+          <div class="template-body">
+            <h4>Retail &amp; Showrooms</h4>
+            <p>Dynamic product showcases, seasonal offers, and store visit directions.</p>
+            <div class="template-meta">
+              <span class="color-dot" style="background:#10b981;"></span>
+              <span class="color-dot" style="background:#14b8a6;"></span>
+              <span class="color-dot" style="background:#0f172a;"></span>
+              <span class="font-tag">Clean Sans</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card">
+          <div class="template-thumb thumb-hotel">
+            <div class="mini-browser-bar">
+              <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+              <span class="mini-url">sayaji-resort.hotel</span>
+            </div>
+            <div class="mini-site-layout">
+              <div class="mini-header-row">
+                <span class="mini-logo-mark">GRAND</span>
+                <span class="mini-btn-chip">Check-in 12PM</span>
+              </div>
+              <div class="mini-hero-block">
+                <div class="mini-headline">Luxury Suites, Pool &amp; Fine Hospitality</div>
+                <div class="mini-cta-row">
+                  <span class="mini-pill-pri">Book Room</span>
+                  <span class="mini-pill-sec">Amenities</span>
+                </div>
+              </div>
+            </div>
+            <span class="template-badge">Hotel &amp; Stays</span>
+          </div>
+          <div class="template-body">
+            <h4>Hotels &amp; Hospitality</h4>
+            <p>Dedicated check-in/out timings, room galleries, and amenities highlights.</p>
+            <div class="template-meta">
+              <span class="color-dot" style="background:#8b5cf6;"></span>
+              <span class="color-dot" style="background:#d97706;"></span>
+              <span class="color-dot" style="background:#1e1e24;"></span>
+              <span class="font-tag">Fraunces Serif</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card">
+          <div class="template-thumb thumb-services">
+            <div class="mini-browser-bar">
+              <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+              <span class="mini-url">sharma-dental.care</span>
+            </div>
+            <div class="mini-site-layout">
+              <div class="mini-header-row">
+                <span class="mini-logo-mark">SHARMA</span>
+                <span class="mini-btn-chip">Consult ↗</span>
+              </div>
+              <div class="mini-hero-block">
+                <div class="mini-headline">Advanced Gentle Family Dental Care</div>
+                <div class="mini-cta-row">
+                  <span class="mini-pill-pri">Book Visit</span>
+                  <span class="mini-pill-sec">Dr. Bio</span>
+                </div>
+              </div>
+            </div>
+            <span class="template-badge">Professional Services</span>
+          </div>
+          <div class="template-body">
+            <h4>Healthcare &amp; Professional</h4>
+            <p>High-trust consultation bookings for dental clinics, lawyers, and accountants.</p>
+            <div class="template-meta">
+              <span class="color-dot" style="background:#06b6d4;"></span>
+              <span class="color-dot" style="background:#0284c7;"></span>
+              <span class="color-dot" style="background:#0f172a;"></span>
+              <span class="font-tag">Plus Jakarta</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRICING SECTION ── -->
+    <section class="pricing-section" id="pricing">
+      <div class="section-intro">
+        <div class="section-tag">TRANSPARENT PRICING</div>
+        <h2 class="section-title">Start free, upgrade as you grow</h2>
+        <p class="section-subtitle">
+          No credit card required. Generate your site and inspect the result immediately.
+        </p>
+      </div>
+
+      <div class="pricing-cards-grid">
+        <!-- Starter Plan -->
+        <div class="pricing-card">
+          <div class="plan-header">
+            <h3 class="plan-name">Starter</h3>
+            <p class="plan-desc">For small businesses trying PagePilot.</p>
+            <div class="plan-price">
+              <span class="currency">$</span><span class="amount">0</span>
+              <span class="period">/ month</span>
+            </div>
+          </div>
+          <ul class="plan-features">
+            <li>✓ 1 Active generated website</li>
+            <li>✓ Google Business data sync</li>
+            <li>✓ AI copy generation</li>
+            <li>✓ Standard PagePilot subdomain</li>
+            <li>✓ 8+ Photo gallery support</li>
+          </ul>
+          <a href="#generator-section" class="btn-plan-secondary">Get Started Free</a>
+        </div>
+
+        <!-- Pro Plan (Highlighted) -->
+        <div class="pricing-card plan-highlight">
+          <div class="popular-ribbon">MOST POPULAR</div>
+          <div class="plan-header">
+            <h3 class="plan-name">Pro</h3>
+            <p class="plan-desc">For growing businesses needing a custom domain.</p>
+            <div class="plan-price">
+              <span class="currency">$</span><span class="amount">19</span>
+              <span class="period">/ month</span>
+            </div>
+          </div>
+          <ul class="plan-features">
+            <li>✓ <strong>Unlimited</strong> website regenerations</li>
+            <li>✓ <strong>Custom domain</strong> support (e.g. yourbiz.com)</li>
+            <li>✓ Automatic Google reviews auto-refresh</li>
+            <li>✓ In-app visual editor &amp; custom styling</li>
+            <li>✓ Free SSL certificate &amp; edge CDN</li>
+            <li>✓ Analytics &amp; visitor tracking</li>
+          </ul>
+          <a href="#generator-section" class="btn-plan-primary">Start 14-Day Free Trial</a>
+        </div>
+
+        <!-- Agency Plan -->
+        <div class="pricing-card">
+          <div class="plan-header">
+            <h3 class="plan-name">Agency</h3>
+            <p class="plan-desc">For digital agencies managing multiple clients.</p>
+            <div class="plan-price">
+              <span class="currency">$</span><span class="amount">49</span>
+              <span class="period">/ month</span>
+            </div>
+          </div>
+          <ul class="plan-features">
+            <li>✓ Up to <strong>25 client websites</strong></li>
+            <li>✓ White-label branding removal</li>
+            <li>✓ Multi-user team workspace</li>
+            <li>✓ Export full static HTML packages</li>
+            <li>✓ Priority 24/7 technical support</li>
+          </ul>
+          <a href="#generator-section" class="btn-plan-secondary">Contact Agency Sales</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BOTTOM CALL TO ACTION ── -->
+    <section class="cta-banner-section">
+      <div class="cta-banner-box">
+        <div class="cta-content">
+          <h2>Ready to turn your Google listing into a website?</h2>
+          <p>Join hundreds of businesses that launched their online storefront in minutes without writing code.</p>
+          <a href="#generator-section" class="btn-cta-large">
+            <span>Create my website</span>
+            <span class="arrow-move">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MODERN SAAS FOOTER ── -->
+    <footer class="footer-modern">
+      <div class="footer-inner">
+        <div class="footer-brand-col">
+          <div class="footer-logo">
+            <span class="brand-symbol">✦</span>
+            <span>PagePilot</span>
+          </div>
+          <p class="footer-tagline">
+            Turn your Google listing into a professional website in seconds.
+          </p>
+          <div class="footer-status-tag">
+            <span class="status-live-dot"></span>
+            <span>All systems operational</span>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <strong>Product</strong>
+          <a href="#how-it-works">How it works</a>
+          <a href="#preview-example">Examples</a>
+          <a href="#templates">Templates</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+
+        <div class="footer-links-col">
+          <strong>Industries</strong>
+          <a href="#templates">Restaurants</a>
+          <a href="#templates">Hotels &amp; Resorts</a>
+          <a href="#templates">Salons &amp; Spas</a>
+          <a href="#templates">Industrial &amp; Retail</a>
+        </div>
+
+        <div class="footer-links-col">
+          <strong>Legal &amp; Trust</strong>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Settings</a>
+          <a href="#">Security Overview</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <p>PagePilot © 2026. All rights reserved. Self-contained AI website generator.</p>
+        <p class="footer-credits">Crafted for modern local businesses worldwide.</p>
+      </div>
+    </footer>
+
+  </div><!-- End #view-landing -->
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 2. DASHBOARD PAGE VIEW                    -->
+  <!-- ══════════════════════════════════════════ -->
+  <div id="view-dashboard" class="view-dashboard hidden">
+    <!-- Dashboard Sidebar -->
+    <aside class="dash-sidebar">
+      <div class="sidebar-top">
+        <a href="#" class="brand-logo" id="dash-logo-home">
+          <div class="brand-symbol">✦</div>
+          <span class="brand-text">Page<span class="brand-gradient">Pilot</span></span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button type="button" class="sidebar-item" id="sidebar-overview-tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>Overview</span>
+        </button>
+
+        <button type="button" class="sidebar-item active" id="sidebar-websites-tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span>Websites</span>
+          <span class="dash-badge-count" id="dash-site-count-badge">0</span>
+        </button>
+
+        <button type="button" class="sidebar-item" id="sidebar-usage-tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          <span>API Usage</span>
+          <span class="dash-badge-count quota-badge-pill" id="sidebar-quota-badge">Free</span>
+        </button>
+
+        <button type="button" class="sidebar-item" id="sidebar-templates-tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+          <span>Templates</span>
+        </button>
+
+        <button type="button" class="sidebar-item" id="sidebar-analytics-tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <span>Analytics</span>
+        </button>
+
+        <button type="button" class="sidebar-item" id="sidebar-settings-tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-action-box">
+        <button type="button" class="btn-sidebar-create" id="btn-sidebar-new">
+          <span>+ New Website</span>
+        </button>
+      </div>
+
+      <div class="sidebar-user-footer">
+        <div class="user-avatar-pill">AD</div>
+        <div class="user-info-text">
+          <strong id="sidebar-user-name">Administrator</strong>
+          <span id="sidebar-user-role">admin@pagepilot.com</span>
+        </div>
+        <button type="button" class="btn-sidebar-logout" id="btn-sidebar-logout" title="Sign out of Dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Dashboard Area -->
+    <main class="dash-main-content">
+      <!-- 0. OVERVIEW COMMAND CENTER VIEW -->
+      <div id="dash-view-overview" class="dash-view-pane">
+        <header class="dash-top-header">
+          <div class="dash-title-group">
+            <div class="overview-meta-top">
+              <span class="overview-date-pill" id="overview-current-date">Tuesday, Sep 8, 2026</span>
+              <span class="overview-live-dot">● System Operational</span>
+            </div>
+            <h1 class="dash-headline" id="overview-greeting">Good evening, Administrator</h1>
+            <p class="dash-subtitle">Here's what's happening with your PagePilot websites.</p>
+          </div>
+
+          <div class="dash-header-actions">
+            <button type="button" class="btn-dash-secondary" id="btn-overview-view-websites">
+              <span>View Websites</span>
+              <span>→</span>
+            </button>
+            <button type="button" class="btn-dash-create" id="btn-overview-create">
+              <span>+ Create Website</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Command Center Top 4 KPI Metrics -->
+        <section class="overview-metrics-grid">
+          <div class="overview-metric-card">
+            <div class="metric-top-row">
+              <span class="metric-label">Websites</span>
+              <div class="metric-icon-wrap icon-blue">🌐</div>
+            </div>
+            <div class="metric-value-row">
+              <strong class="metric-big-num" id="overview-metric-websites">8</strong>
+              <span class="metric-sub-tag tag-green">+1 this month</span>
+            </div>
+            <span class="metric-footnote">Total generated websites</span>
+          </div>
+
+          <div class="overview-metric-card">
+            <div class="metric-top-row">
+              <span class="metric-label">Published</span>
+              <div class="metric-icon-wrap icon-green">🚀</div>
+            </div>
+            <div class="metric-value-row">
+              <strong class="metric-big-num" id="overview-metric-published">8</strong>
+              <span class="metric-sub-tag tag-cyan">100% Live</span>
+            </div>
+            <span class="metric-footnote">Live websites on Edge CDN</span>
+          </div>
+
+          <div class="overview-metric-card">
+            <div class="metric-top-row">
+              <span class="metric-label">Monthly Visitors</span>
+              <div class="metric-icon-wrap icon-purple">👥</div>
+            </div>
+            <div class="metric-value-row">
+              <strong class="metric-big-num">2,840</strong>
+              <span class="metric-sub-tag tag-demo">Demo data</span>
+            </div>
+            <span class="metric-footnote">Across all active websites</span>
+          </div>
+
+          <div class="overview-metric-card">
+            <div class="metric-top-row">
+              <span class="metric-label">Average Rating</span>
+              <div class="metric-icon-wrap icon-orange">⭐</div>
+            </div>
+            <div class="metric-value-row">
+              <strong class="metric-big-num" id="overview-metric-rating">4.8 ★</strong>
+              <span class="metric-sub-tag tag-gold">128+ Reviews</span>
+            </div>
+            <span class="metric-footnote">Across imported Google listings</span>
+          </div>
+        </section>
+
+        <!-- Command Center Two-Column Layout -->
+        <div class="overview-content-grid">
+          <!-- Left Main Column (Wide) -->
+          <div class="overview-main-col">
+            <!-- Website Activity Chart Card -->
+            <div class="overview-card activity-chart-card">
+              <div class="overview-card-header">
+                <div>
+                  <div class="card-title-row">
+                    <h3 class="overview-card-title">Website Activity</h3>
+                    <span class="demo-badge-pill">Demo telemetry</span>
+                  </div>
+                  <p class="overview-card-sub">Aggregated traffic across all live PagePilot websites</p>
+                </div>
+                <div class="chart-time-filter" id="overview-chart-filters">
+                  <button type="button" class="btn-time-filter active" data-days="7">7 Days</button>
+                  <button type="button" class="btn-time-filter" data-days="30">30 Days</button>
+                  <button type="button" class="btn-time-filter" data-days="90">90 Days</button>
+                </div>
+              </div>
+
+              <div class="chart-stats-ribbon">
+                <div class="chart-ribbon-item">
+                  <span class="ribbon-dot dot-blue"></span>
+                  <span class="ribbon-label">Visitors:</span>
+                  <strong class="ribbon-val" id="chart-val-visitors">684</strong>
+                </div>
+                <div class="chart-ribbon-item">
+                  <span class="ribbon-dot dot-purple"></span>
+                  <span class="ribbon-label">Page Views:</span>
+                  <strong class="ribbon-val" id="chart-val-views">1,492</strong>
+                </div>
+                <div class="chart-ribbon-item">
+                  <span class="ribbon-dot dot-green"></span>
+                  <span class="ribbon-label">Direct Inquiries:</span>
+                  <strong class="ribbon-val" id="chart-val-leads">48</strong>
+                </div>
+              </div>
+
+              <!-- Sleek SVG Line/Area Chart -->
+              <div class="svg-chart-container">
+                <svg id="overview-activity-svg" viewBox="0 0 700 220" class="responsive-svg-chart">
+                  <defs>
+                    <linearGradient id="grad-visitors" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.32" />
+                      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.0" />
+                    </linearGradient>
+                    <linearGradient id="grad-views" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.25" />
+                      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  <line x1="40" y1="30" x2="680" y2="30" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+                  <line x1="40" y1="80" x2="680" y2="80" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+                  <line x1="40" y1="130" x2="680" y2="130" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+                  <line x1="40" y1="180" x2="680" y2="180" stroke="rgba(255,255,255,0.12)" />
+                  
+                  <text x="32" y="34" text-anchor="end" fill="#64748b" font-size="10">800</text>
+                  <text x="32" y="84" text-anchor="end" fill="#64748b" font-size="10">500</text>
+                  <text x="32" y="134" text-anchor="end" fill="#64748b" font-size="10">250</text>
+                  <text x="32" y="184" text-anchor="end" fill="#64748b" font-size="10">0</text>
+
+                  <path id="chart-area-views" d="M 60,150 Q 150,110 240,125 T 420,70 T 600,60 L 660,75 L 660,180 L 60,180 Z" fill="url(#grad-views)" />
+                  <path id="chart-line-views" d="M 60,150 Q 150,110 240,125 T 420,70 T 600,60 L 660,75" fill="none" stroke="#a855f7" stroke-width="2.5" />
+                  
+                  <path id="chart-area-visitors" d="M 60,165 Q 150,135 240,145 T 420,105 T 600,95 L 660,110 L 660,180 L 60,180 Z" fill="url(#grad-visitors)" />
+                  <path id="chart-line-visitors" d="M 60,165 Q 150,135 240,145 T 420,105 T 600,95 L 660,110" fill="none" stroke="#0ea5e9" stroke-width="2.5" />
+
+                  <g id="chart-x-labels" fill="#64748b" font-size="11">
+                    <text x="60" y="202" text-anchor="middle">Mon</text>
+                    <text x="160" y="202" text-anchor="middle">Tue</text>
+                    <text x="260" y="202" text-anchor="middle">Wed</text>
+                    <text x="360" y="202" text-anchor="middle">Thu</text>
+                    <text x="460" y="202" text-anchor="middle">Fri</text>
+                    <text x="560" y="202" text-anchor="middle">Sat</text>
+                    <text x="660" y="202" text-anchor="middle">Sun</text>
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Recent Websites Section -->
+            <div class="overview-card recent-sites-card">
+              <div class="overview-card-header">
+                <div>
+                  <h3 class="overview-card-title">Recent Websites</h3>
+                  <p class="overview-card-sub">Recently imported and updated Google listings</p>
+                </div>
+                <button type="button" class="btn-card-header-link" id="btn-overview-all-sites">
+                  <span>View All Websites</span>
+                  <span>→</span>
+                </button>
+              </div>
+
+              <div class="recent-sites-list" id="overview-recent-sites-container">
+                <!-- Dynamically rendered from existing websites data by app.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Sidebar Column -->
+          <div class="overview-side-col">
+            <!-- Quick Actions Card -->
+            <div class="overview-card quick-actions-card">
+              <h3 class="overview-card-title">Quick Actions</h3>
+              <p class="overview-card-sub">Frequently used management tools</p>
+              
+              <div class="quick-actions-list">
+                <button type="button" class="quick-action-btn" id="qa-create-site">
+                  <div class="qa-icon-wrap icon-blue">✦</div>
+                  <div class="qa-text">
+                    <strong>+ Create Website</strong>
+                    <span>Import fresh Google listing</span>
+                  </div>
+                  <span class="qa-arrow">→</span>
+                </button>
+
+                <button type="button" class="quick-action-btn" id="qa-browse-templates">
+                  <div class="qa-icon-wrap icon-purple">🎨</div>
+                  <div class="qa-text">
+                    <strong>Browse Templates</strong>
+                    <span>Explore 8 industry layouts</span>
+                  </div>
+                  <span class="qa-arrow">→</span>
+                </button>
+
+                <button type="button" class="quick-action-btn" id="qa-view-analytics">
+                  <div class="qa-icon-wrap icon-green">📊</div>
+                  <div class="qa-text">
+                    <strong>View Analytics</strong>
+                    <span>Traffic &amp; lead conversions</span>
+                  </div>
+                  <span class="qa-arrow">→</span>
+                </button>
+
+                <button type="button" class="quick-action-btn" id="qa-api-usage">
+                  <div class="qa-icon-wrap icon-orange">⚡</div>
+                  <div class="qa-text">
+                    <strong>API Usage</strong>
+                    <span>Live SerpAPI &amp; Gemini quota</span>
+                  </div>
+                  <span class="qa-arrow">→</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Recent Activity Feed Card -->
+            <div class="overview-card activity-feed-card">
+              <div class="card-title-row">
+                <h3 class="overview-card-title">Recent Activity</h3>
+                <span class="feed-live-indicator">Live</span>
+              </div>
+              <p class="overview-card-sub">Event log across generated properties</p>
+
+              <div class="activity-feed-list" id="overview-activity-feed">
+                <div class="feed-item">
+                  <div class="feed-icon-circle feed-icon-green">🚀</div>
+                  <div class="feed-content">
+                    <p class="feed-event">Website published live</p>
+                    <span class="feed-target">Sayaji Hotel Vadodara</span>
+                    <span class="feed-time">2 hours ago</span>
+                  </div>
+                </div>
+
+                <div class="feed-item">
+                  <div class="feed-icon-circle feed-icon-blue">✦</div>
+                  <div class="feed-content">
+                    <p class="feed-event">AI copywriting compiled</p>
+                    <span class="feed-target">Royal Traders &amp; Hardware</span>
+                    <span class="feed-time">5 hours ago</span>
+                  </div>
+                </div>
+
+                <div class="feed-item">
+                  <div class="feed-icon-circle feed-icon-purple">🎨</div>
+                  <div class="feed-content">
+                    <p class="feed-event">Template layout applied</p>
+                    <span class="feed-target">Modern Business &amp; Industrial</span>
+                    <span class="feed-time">1 day ago</span>
+                  </div>
+                </div>
+
+                <div class="feed-item">
+                  <div class="feed-icon-circle feed-icon-orange">📍</div>
+                  <div class="feed-content">
+                    <p class="feed-event">Google profile imported</p>
+                    <span class="feed-target">BE ABLE ADVANCE REHAB STUDIO</span>
+                    <span class="feed-time">2 days ago</span>
+                  </div>
+                </div>
+
+                <div class="feed-item">
+                  <div class="feed-icon-circle feed-icon-cyan">⚡</div>
+                  <div class="feed-content">
+                    <p class="feed-event">Quota check verified</p>
+                    <span class="feed-target">241 SerpAPI Searches Remaining</span>
+                    <span class="feed-time">3 days ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- End #dash-view-overview -->
+
+      <!-- 1. WEBSITES TAB VIEW -->
+      <div id="dash-view-websites" class="dash-view-pane hidden">
+        <header class="dash-top-header">
+          <div class="dash-title-group">
+            <button type="button" class="btn-back-home" id="btn-dash-back-home">← Back to Landing Page</button>
+            <h1 class="dash-headline">Websites Overview</h1>
+            <p class="dash-subtitle">Manage and publish websites imported from Google Maps.</p>
+          </div>
+
+          <div class="dash-header-actions">
+            <button type="button" class="btn-dash-refresh" id="dash-refresh-btn" title="Refresh list">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+              </svg>
+              <span>Refresh</span>
+            </button>
+            <button type="button" class="btn-dash-create" id="btn-dash-header-create">
+              <span>+ Create Website</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Admin API Quota Quick Banner -->
+        <div class="quota-quick-bar" id="quota-quick-bar">
+          <div class="quota-quick-item">
+            <span class="quota-quick-icon">🗺️</span>
+            <div class="quota-quick-text">
+              <strong>SerpAPI:</strong> <span id="quick-serp-left">241</span> / 250 Left (Free Plan)
+            </div>
+            <div class="quota-mini-progress">
+              <div class="quota-mini-fill" id="quick-serp-bar" style="width: 96.4%;"></div>
+            </div>
+          </div>
+          <div class="quota-quick-divider"></div>
+          <div class="quota-quick-item">
+            <span class="quota-quick-icon">✨</span>
+            <div class="quota-quick-text">
+              <strong>Google AI Studio:</strong> <span id="quick-gemini-left">1,497</span> / 1,500 Today
+            </div>
+            <div class="quota-mini-progress">
+              <div class="quota-mini-fill fill-purple" id="quick-gemini-bar" style="width: 99.8%;"></div>
+            </div>
+          </div>
+          <button type="button" class="btn-view-quotas" id="btn-quick-view-quotas">
+            <span>View Quota Details →</span>
+          </button>
+        </div>
+
+        <!-- KPI Stat Widgets -->
+        <section class="dash-stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon-wrap icon-blue">🌐</div>
+            <div class="stat-data">
+              <span class="stat-label">Total Websites</span>
+              <strong class="stat-value" id="kpi-total-sites">0</strong>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrap icon-purple">👥</div>
+            <div class="stat-data">
+              <span class="stat-label">Monthly Visitors</span>
+              <strong class="stat-value">2,840</strong>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrap icon-green">⭐</div>
+            <div class="stat-data">
+              <span class="stat-label">Average Star Rating</span>
+              <strong class="stat-value">4.8 ★</strong>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrap icon-orange">⚡</div>
+            <div class="stat-data">
+              <span class="stat-label">Global CDN Status</span>
+              <strong class="stat-value">100% Online</strong>
+            </div>
+          </div>
+        </section>
+
+        <!-- Search & Filters -->
+        <section class="dash-filter-row">
+          <div class="dash-search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="dash-search-input" placeholder="Search websites by name or category..." />
+          </div>
+
+          <div class="dash-filter-tabs">
+            <button type="button" class="filter-tab active" data-filter="all">All Sites</button>
+            <button type="button" class="filter-tab" data-filter="published">Published</button>
+          </div>
+        </section>
+
+        <!-- Website Cards Grid -->
+        <section class="dash-cards-grid" id="dash-sites-container">
+          <!-- Rendered by app.js -->
+          <div class="loading-state-box">
+            <div class="spinner-sm"></div>
+            <span>Loading your websites...</span>
+          </div>
+        </section>
+      </div><!-- End #dash-view-websites -->
+
+      <!-- 2. API USAGE & QUOTA DEDICATED VIEW -->
+      <div id="dash-view-usage" class="dash-view-pane hidden">
+        <header class="dash-top-header">
+          <div class="dash-title-group">
+            <button type="button" class="btn-back-home" id="btn-usage-back-sites">← Back to Websites</button>
+            <h1 class="dash-headline">API Usage &amp; Quota Monitor</h1>
+            <p class="dash-subtitle">Real-time usage tracking for SerpAPI (Google Maps) and Google AI Studio (Gemini).</p>
+          </div>
+
+          <div class="dash-header-actions">
+            <div class="plan-indicator-pill">
+              <span class="indicator-dot-green"></span>
+              <span>100% Free Tier Active</span>
+            </div>
+            <button type="button" class="btn-dash-refresh" id="btn-refresh-usage" title="Sync live quotas">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+              </svg>
+              <span>Sync Live Data</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Usage Hero Cards Grid -->
+        <div class="usage-cards-grid">
+          <!-- SerpAPI Card -->
+          <div class="usage-card card-serpapi">
+            <div class="usage-card-top">
+              <div class="usage-card-brand">
+                <span class="service-icon">🗺️</span>
+                <div>
+                  <h3>SerpAPI</h3>
+                  <span class="service-role">Google Maps &amp; Local Business Scraping</span>
+                </div>
+              </div>
+              <span class="badge-plan-status" id="serp-plan-badge">Free Plan · Active</span>
+            </div>
+
+            <div class="usage-main-stat">
+              <div class="stat-number-wrap">
+                <span class="stat-big-num" id="serp-searches-left">241</span>
+                <span class="stat-big-denom">/ <span id="serp-total-quota">250</span> searches left</span>
+              </div>
+              <span class="stat-percent-tag" id="serp-percent-tag">3.6% used</span>
+            </div>
+
+            <div class="usage-progress-container">
+              <div class="usage-progress-track">
+                <div class="usage-progress-bar bar-serp" id="serp-progress-bar" style="width: 3.6%;"></div>
+              </div>
+            </div>
+
+            <div class="usage-details-list">
+              <div class="usage-detail-row">
+                <span class="detail-label">Monthly Allocation</span>
+                <strong class="detail-val" id="serp-detail-limit">250 searches / month</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Used This Month</span>
+                <strong class="detail-val" id="serp-detail-used">9 searches</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Hourly Rate Limit</span>
+                <strong class="detail-val" id="serp-detail-ratelimit">250 searches / hour</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Account Email</span>
+                <strong class="detail-val" id="serp-detail-email">ronak.softdev@gmail.com</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Next Monthly Cycle</span>
+                <strong class="detail-val" id="serp-detail-renewal">2026-09-14</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Monthly Billed Cost</span>
+                <strong class="detail-val highlight-free">$0.00 / month (Free Tier)</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google AI Studio (Gemini) Card -->
+          <div class="usage-card card-gemini">
+            <div class="usage-card-top">
+              <div class="usage-card-brand">
+                <span class="service-icon">✨</span>
+                <div>
+                  <h3>Google AI Studio</h3>
+                  <span class="service-role">Gemini AI Website Copy Engine</span>
+                </div>
+              </div>
+              <span class="badge-plan-status badge-gemini" id="gemini-tier-badge">AI Studio Free Tier</span>
+            </div>
+
+            <div class="usage-main-stat">
+              <div class="stat-number-wrap">
+                <span class="stat-big-num" id="gemini-requests-left">1,497</span>
+                <span class="stat-big-denom">/ <span id="gemini-daily-quota">1,500</span> requests left today</span>
+              </div>
+              <span class="stat-percent-tag tag-purple" id="gemini-percent-tag">0.2% used</span>
+            </div>
+
+            <div class="usage-progress-container">
+              <div class="usage-progress-track">
+                <div class="usage-progress-bar bar-gemini" id="gemini-progress-bar" style="width: 0.2%;"></div>
+              </div>
+            </div>
+
+            <div class="usage-details-list">
+              <div class="usage-detail-row">
+                <span class="detail-label">Active Model</span>
+                <strong class="detail-val model-code" id="gemini-detail-model">gemini-3.5-flash-lite</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Daily Limit (RPD)</span>
+                <strong class="detail-val">1,500 requests / day</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Requests Used Today</span>
+                <strong class="detail-val" id="gemini-detail-used">3 requests</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Rate Limit (RPM)</span>
+                <strong class="detail-val">15 requests / minute</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Token Limit (TPM)</span>
+                <strong class="detail-val">1,000,000 tokens / min</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Reset Cycle</span>
+                <strong class="detail-val">00:00 UTC (Daily Reset)</strong>
+              </div>
+              <div class="usage-detail-row">
+                <span class="detail-label">Lifetime Generated</span>
+                <strong class="detail-val" id="gemini-detail-lifetime">8 websites</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Capacity & Production Insights Card -->
+        <div class="usage-insights-card">
+          <div class="insights-header">
+            <span class="insights-icon">💡</span>
+            <div>
+              <h4>Free Tier Production Capacity &amp; Resource Guide</h4>
+              <p>How PagePilot maximizes your free tier quotas for cost-free deployment.</p>
+            </div>
+          </div>
+          <div class="insights-grid">
+            <div class="insight-box">
+              <span class="box-tag">Per-Website Consumption</span>
+              <h5>~2 SerpAPI + 1 Gemini Call</h5>
+              <p>Each business import consumes 1-2 Google Maps place lookups and 1 AI prompt to craft all copy and headlines.</p>
+            </div>
+            <div class="insight-box">
+              <span class="box-tag">Monthly Free Capacity</span>
+              <h5 class="highlight-green">Up to 125 Full Websites</h5>
+              <p>Your 250 SerpAPI searches per month allow generating up to 125 complete local business websites without paying anything.</p>
+            </div>
+            <div class="insight-box">
+              <span class="box-tag">Daily AI Ceiling</span>
+              <h5>1,500 Websites / Day</h5>
+              <p>Google AI Studio provides 1,500 daily requests free, meaning Gemini will never bottleneck normal operation.</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- End #dash-view-usage -->
+
+      <!-- 2. TEMPLATES TAB VIEW -->
+      <div id="dash-view-templates" class="dash-view-pane hidden">
+        <header class="dash-top-header">
+          <div class="dash-title-group">
+            <button type="button" class="btn-back-home" id="btn-templates-back-overview">← Back to Overview</button>
+            <h1 class="dash-headline">Website Templates</h1>
+            <p class="dash-subtitle">Choose a design that fits your business. PagePilot adapts your business content automatically.</p>
+          </div>
+
+          <div class="dash-header-actions">
+            <button type="button" class="btn-dash-create" id="btn-templates-create">
+              <span>+ Create Website</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Featured Recommended Template Banner -->
+        <div class="template-featured-banner">
+          <div class="featured-banner-left">
+            <div class="featured-badge-tag">✦ Recommended for your business</div>
+            <h2 class="featured-title">Modern Business &amp; Industrial Architecture</h2>
+            <p class="featured-desc">
+              Tailored specifically for industrial tooling, technical supply, and wholesale showrooms like <strong>Royal Traders &amp; Hardware</strong>. Engineered with high-contrast spec highlights, direct RFQ quotation triggers, and verified Google reviews.
+            </p>
+            <div class="featured-specs-row">
+              <span class="spec-pill">📍 Google Maps Synced</span>
+              <span class="spec-pill">⚡ 98+ PageSpeed</span>
+              <span class="spec-pill">📱 Mobile Responsive</span>
+            </div>
+            <div class="featured-btn-row">
+              <button type="button" class="btn-featured-use" id="btn-featured-use-tmpl">
+                <span>Use This Template →</span>
+              </button>
+              <button type="button" class="btn-featured-preview" id="btn-featured-prev-tmpl">
+                <span>Live Preview ↗</span>
+              </button>
+            </div>
+          </div>
+          <div class="featured-banner-right">
+            <div class="featured-mini-window">
+              <div class="mini-browser-bar">
+                <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+                <span class="mini-url">pagepilot.sites/royal-traders</span>
+              </div>
+              <div class="featured-mini-preview-body">
+                <div class="mini-header-row">
+                  <span class="mini-logo-mark">ROYAL TRADERS</span>
+                  <span class="mini-btn-chip">📞 Call Now</span>
+                </div>
+                <div class="mini-hero-block">
+                  <div class="mini-badge">✦ Hardware &amp; Tooling</div>
+                  <div class="mini-headline">Heavy-Duty Power Tools &amp; Industrial Hardware</div>
+                  <div class="mini-cta-row">
+                    <span class="mini-pill-pri">Request Quote</span>
+                    <span class="mini-pill-sec">Directions</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Template Category Filter Bar -->
+        <div class="templates-filter-bar" id="templates-filter-bar">
+          <button type="button" class="t-filter-btn active" data-cat="all">All Templates (8)</button>
+          <button type="button" class="t-filter-btn" data-cat="Modern Business">Modern Business</button>
+          <button type="button" class="t-filter-btn" data-cat="Restaurant">Restaurant &amp; Cafe</button>
+          <button type="button" class="t-filter-btn" data-cat="Salon & Wellness">Salon &amp; Wellness</button>
+          <button type="button" class="t-filter-btn" data-cat="Retail">Retail &amp; Boutique</button>
+          <button type="button" class="t-filter-btn" data-cat="Hotel & Hospitality">Hotel &amp; Hospitality</button>
+          <button type="button" class="t-filter-btn" data-cat="Healthcare">Healthcare &amp; Clinics</button>
+          <button type="button" class="t-filter-btn" data-cat="Professional Services">Professional Services</button>
+        </div>
+
+        <!-- Templates Visual Grid (8 Realistic Miniature Website Cards) -->
+        <div class="dash-templates-grid" id="dash-templates-container">
+          <!-- 1. Modern Business -->
+          <div class="dash-template-card" data-cat="Modern Business">
+            <div class="template-card-preview-wrap">
+              <div class="mini-browser-bar">
+                <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+                <span class="mini-url">apex-industrial.com</span>
+              </div>
+              <div class="mini-site-layout theme-modern">
+                <div class="mini-header-row">
+                  <span class="mini-logo-mark">APEX</span>
+                  <span class="mini-btn-chip">Quote ↗</span>
+                </div>
+                <div class="mini-hero-block">
+                  <span class="mini-chip-accent">Industrial</span>
+                  <div class="mini-headline">Precision Tooling &amp; Industrial Supply</div>
+                  <div class="mini-cta-row">
+                    <span class="mini-pill-pri">Catalog</span>
+                    <span class="mini-pill-sec">Specs</span>
+                  </div>
+                </div>
+                <div class="mini-grid-row">
+                  <div class="mini-grid-box">Power Tools</div>
+                  <div class="mini-grid-box">Fasteners</div>
+                </div>
+              </div>
+              <span class="dash-template-cat-badge">Modern Business</span>
+            </div>
+            <div class="template-card-info">
+              <h4>Modern Business &amp; Industrial</h4>
+              <p>Clean, authoritative layout designed for manufacturers, trade suppliers, and industrial distributors.</p>
+              <div class="suitable-for-box">
+                <span class="suitable-label">Best for:</span>
+                <span class="suitable-tag">Hardware</span>
+                <span class="suitable-tag">Tooling</span>
+                <span class="suitable-tag">Trade Services</span>
+              </div>
+              <div class="template-card-actions">
+                <button type="button" class="btn-template-preview" data-template="Modern Business">Preview</button>
+                <button type="button" class="btn-template-use" data-template="Modern Business">Use Template →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Restaurant -->
+          <div class="dash-template-card" data-cat="Restaurant">
+            <div class="template-card-preview-wrap">
+              <div class="mini-browser-bar">
+                <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+                <span class="mini-url">trattoria-bella.dining</span>
+              </div>
+              <div class="mini-site-layout theme-restaurant">
+                <div class="mini-header-row">
+                  <span class="mini-logo-mark color-gold">BELLA</span>
+                  <span class="mini-btn-chip gold-btn">Reserve Table</span>
+                </div>
+                <div class="mini-hero-block">
+                  <span class="mini-chip-accent gold-chip">⭐ 4.9 Dining</span>
+                  <div class="mini-headline font-serif">Artisanal Wood-Fired &amp; Fresh Pasta</div>
+                  <div class="mini-cta-row">
+                    <span class="mini-pill-pri gold-bg">View Menu</span>
+                    <span class="mini-pill-sec">Hours</span>
+                  </div>
+                </div>
+                <div class="mini-grid-row">
+                  <div class="mini-grid-box">Chef Specials</div>
+                  <div class="mini-grid-box">Wine List</div>
+                </div>
+              </div>
+              <span class="dash-template-cat-badge badge-orange">Restaurant &amp; Dining</span>
+            </div>
+            <div class="template-card-info">
+              <h4>Restaurant &amp; Dining</h4>
+              <p>Sensory-focused dining layout with menu highlights, authentic atmosphere photography, and instant reservation CTAs.</p>
+              <div class="suitable-for-box">
+                <span class="suitable-label">Best for:</span>
+                <span class="suitable-tag">Restaurants</span>
+                <span class="suitable-tag">Cafes</span>
+                <span class="suitable-tag">Bistros</span>
+              </div>
+              <div class="template-card-actions">
+                <button type="button" class="btn-template-preview" data-template="Restaurant">Preview</button>
+                <button type="button" class="btn-template-use" data-template="Restaurant">Use Template →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Salon & Wellness -->
+          <div class="dash-template-card" data-cat="Salon & Wellness">
+            <div class="template-card-preview-wrap">
+              <div class="mini-browser-bar">
+                <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+                <span class="mini-url">lumiere-spa.salon</span>
+              </div>
+              <div class="mini-site-layout theme-salon">
+                <div class="mini-header-row">
+                  <span class="mini-logo-mark color-pink">LUMIÈRE</span>
+                  <span class="mini-btn-chip pink-btn">Book Visit</span>
+                </div>
+                <div class="mini-hero-block">
+                  <span class="mini-chip-accent pink-chip">✦ Luxury Aesthetics</span>
+                  <div class="mini-headline font-serif">Organic Skincare &amp; Hair Artistry</div>
+                  <div class="mini-cta-row">
+                    <span class="mini-pill-pri pink-bg">Treatments</span>
+                    <span class="mini-pill-sec">Pricing</span>
+                  </div>
+                </div>
+                <div class="mini-grid-row">
+                  <div class="mini-grid-box">Skin Therapy</div>
+                  <div class="mini-grid-box">Hair Styling</div>
+                </div>
+              </div>
+              <span class="dash-template-cat-badge badge-pink">Salon &amp; Wellness</span>
+            </div>
+            <div class="template-card-info">
+              <h4>Salon &amp; Aesthetics</h4>
+              <p>Minimalist, elegant presentation tailored for spas, luxury hair salons, skincare studios, and wellness centers.</p>
+              <div class="suitable-for-box">
+                <span class="suitable-label">Best for:</span>
+                <span class="suitable-tag">Spas</span>
+                <span class="suitable-tag">Hair Studios</span>
+                <span class="suitable-tag">Wellness</span>
+              </div>
+              <div class="template-card-actions">
+                <button type="button" class="btn-template-preview" data-template="Salon & Wellness">Preview</button>
+                <button type="button" class="btn-template-use" data-template="Salon & Wellness">Use Template →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Retail -->
+          <div class="dash-template-card" data-cat="Retail">
+            <div class="template-card-preview-wrap">
+              <div class="mini-browser-bar">
+                <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+                <span class="mini-url">nordic-living.shop</span>
+              </div>
+              <div class="mini-site-layout theme-retail">
+                <div class="mini-header-row">
+                  <span class="mini-logo-mark color-green">NORDIC</span>
+                  <span class="mini-btn-chip green-btn">Visit Store</span>
+                </div>
+                <div class="mini-hero-block">
+                  <span class="mini-chip-accent green-chip">Showroom &amp; Decor</span>
+                  <div class="mini-headline">Handcrafted Furniture &amp; Interior Decor</div>
+                  <div class="mini-cta-row">
+                    <span class="mini-pill-pri green-bg">Collection</span>
+                    <span class="mini-pill-sec">Directions</span>
+                  </div>
+                </div>
+                <div class="mini-grid-row">
+                  <div class="mini-grid-box">Living Room</div>
+                  <div class="mini-grid-box">Lighting</div>
+                </div>
+              </div>
+              <span class="dash-template-cat-badge badge-green">Retail &amp; Boutique</span>
+            </div>
+            <div class="template-card-info">
+              <h4>Retail &amp; Showrooms</h4>
+              <p>Dynamic product category showcases, seasonal discounts, store timings, and Google Maps physical directions.</p>
+              <div class="suitable-for-box">
+                <span class="suitable-label">Best for:</span>
+                <span class="suitable-tag">Showrooms</span>
+                <span class="suitable-tag">Furniture</span>
+                <span class="suitable-tag">Boutiques</span>
+              </div>
+              <div class="template-card-actions">
+                <button type="button" class="btn-template-preview" data-template="Retail">Preview</button>
+                <button type="button" class="btn-template-use" data-template="Retail">Use Template →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Hotel & Hospitality -->
+          <div class="dash-template-card" data-cat="Hotel & Hospitality">
+            <div class="template-card-preview-wrap">
+              <div class="mini-browser-bar">
+                <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+                <span class="mini-url">sayaji-resort.hotel</span>
+              </div>
+              <div class="mini-site-layout theme-hotel">
+                <div class="mini-header-row">
+                  <span class="mini-logo-mark color-purple">GRAND</span>
+                  <span class="mini-btn-chip purple-btn">Book Room</span>
+                </div>
+                <div class="mini-hero-block">
+                  <span class="mini-chip-accent purple-chip">Check-in 12:00 PM</span>
+                  <div class="mini-headline font-serif">Luxury Suites, Pool &amp; Fine Hospitality</div>
+                  <div class="mini-cta-row">
+                    <span class="mini-pill-pri purple-bg">Rooms</span>
+                    <span class="mini-pill-sec">Amenities</span>
+                  </div>
+                </div>
+                <div class="mini-grid-row">
+                  <div class="mini-grid-box">Deluxe Suite</div>
+                  <div class="mini-grid-box">Dining Hall</div>
+                </div>
+              </div>
+              <span class="dash-template-cat-badge badge-purple">Hotel &amp; Stays</span>
+            </div>
+            <div class="template-card-info">
+              <h4>Hotels &amp; Hospitality</h4>
+              <p>Dedicated check-in/out schedules, room types, pool &amp; gym amenity lists, and instant booking telephone triggers.</p>
+              <div class="suitable-for-box">
+                <span class="suitable-label">Best for:</span>
+                <span class="suitable-tag">Hotels</span>
+                <span class="suitable-tag">Resorts</span>
+                <span class="suitable-tag">Homestays</span>
+              </div>
+              <div class="template-card-actions">
+                <button type="button" class="btn-template-preview" data-template="Hotel & Hospitality">Preview</button>
+                <button type="button" class="btn-template-use" data-template="Hotel & Hospitality">Use Template →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Healthcare -->
+          <div class="dash-template-card" data-cat="Healthcare">
+            <div class="template-card-preview-wrap">
+              <div class="mini-browser-bar">
+                <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+                <span class="mini-url">pulsecare-clinic.med</span>
+              </div>
+              <div class="mini-site-layout theme-health">
+                <div class="mini-header-row">
+                  <span class="mini-logo-mark color-cyan">PULSE</span>
+                  <span class="mini-btn-chip cyan-btn">Book Consult</span>
+                </div>
+                <div class="mini-hero-block">
+                  <span class="mini-chip-accent cyan-chip">Verified Medical Care</span>
+                  <div class="mini-headline">Gentle Family Dental &amp; Advanced Care</div>
+                  <div class="mini-cta-row">
+                    <span class="mini-pill-pri cyan-bg">Doctors</span>
+                    <span class="mini-pill-sec">Hours</span>
+                  </div>
+                </div>
+                <div class="mini-grid-row">
+                  <div class="mini-grid-box">Emergency</div>
+                  <div class="mini-grid-box">Checkup</div>
+                </div>
+              </div>
+              <span class="dash-template-cat-badge badge-cyan">Healthcare &amp; Clinics</span>
+            </div>
+            <div class="template-card-info">
+              <h4>Healthcare &amp; Clinics</h4>
+              <p>Trust-first medical layout highlighting doctor certifications, consultation booking, patient testimonials, and emergency contact.</p>
+              <div class="suitable-for-box">
+                <span class="suitable-label">Best for:</span>
+                <span class="suitable-tag">Clinics</span>
+                <span class="suitable-tag">Dental</span>
+                <span class="suitable-tag">Physiotherapy</span>
+              </div>
+              <div class="template-card-actions">
+                <button type="button" class="btn-template-preview" data-template="Healthcare">Preview</button>
+                <button type="button" class="btn-template-use" data-template="Healthcare">Use Template →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Professional Services -->
+          <div class="dash-template-card" data-cat="Professional Services">
+            <div class="template-card-preview-wrap">
+              <div class="mini-browser-bar">
+                <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+                <span class="mini-url">sterling-advisory.co</span>
+              </div>
+              <div class="mini-site-layout theme-pro">
+                <div class="mini-header-row">
+                  <span class="mini-logo-mark">STERLING</span>
+                  <span class="mini-btn-chip">Schedule</span>
+                </div>
+                <div class="mini-hero-block">
+                  <span class="mini-chip-accent">Chartered Advisory</span>
+                  <div class="mini-headline font-serif">Corporate Tax, Legal &amp; Business Strategy</div>
+                  <div class="mini-cta-row">
+                    <span class="mini-pill-pri">Services</span>
+                    <span class="mini-pill-sec">Case Studies</span>
+                  </div>
+                </div>
+                <div class="mini-grid-row">
+                  <div class="mini-grid-box">Tax Planning</div>
+                  <div class="mini-grid-box">Audit</div>
+                </div>
+              </div>
+              <span class="dash-template-cat-badge">Professional Services</span>
+            </div>
+            <div class="template-card-info">
+              <h4>Professional Services</h4>
+              <p>Corporate, authoritative design tailored for legal practitioners, chartered accountants, architects, and business consultants.</p>
+              <div class="suitable-for-box">
+                <span class="suitable-label">Best for:</span>
+                <span class="suitable-tag">Accounting</span>
+                <span class="suitable-tag">Legal</span>
+                <span class="suitable-tag">Consulting</span>
+              </div>
+              <div class="template-card-actions">
+                <button type="button" class="btn-template-preview" data-template="Professional Services">Preview</button>
+                <button type="button" class="btn-template-use" data-template="Professional Services">Use Template →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Auto & Garage (Modern Business) -->
+          <div class="dash-template-card" data-cat="Modern Business">
+            <div class="template-card-preview-wrap">
+              <div class="mini-browser-bar">
+                <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
+                <span class="mini-url">voltcraft-auto.service</span>
+              </div>
+              <div class="mini-site-layout theme-auto">
+                <div class="mini-header-row">
+                  <span class="mini-logo-mark color-orange">VOLTCRAFT</span>
+                  <span class="mini-btn-chip orange-btn">Estimate ↗</span>
+                </div>
+                <div class="mini-hero-block">
+                  <span class="mini-chip-accent orange-chip">Certified Mechanics</span>
+                  <div class="mini-headline">Vehicle Repair &amp; Electronic Diagnostics</div>
+                  <div class="mini-cta-row">
+                    <span class="mini-pill-pri orange-bg">Services</span>
+                    <span class="mini-pill-sec">Pricing</span>
+                  </div>
+                </div>
+                <div class="mini-grid-row">
+                  <div class="mini-grid-box">Diagnostics</div>
+                  <div class="mini-grid-box">Maintenance</div>
+                </div>
+              </div>
+              <span class="dash-template-cat-badge badge-orange">Auto &amp; Trade</span>
+            </div>
+            <div class="template-card-info">
+              <h4>Automotive &amp; Trade Services</h4>
+              <p>High-impact mechanic layout featuring immediate quote calculators, service guarantees, and quick call routing.</p>
+              <div class="suitable-for-box">
+                <span class="suitable-label">Best for:</span>
+                <span class="suitable-tag">Mechanics</span>
+                <span class="suitable-tag">Auto Body</span>
+                <span class="suitable-tag">Detailing</span>
+              </div>
+              <div class="template-card-actions">
+                <button type="button" class="btn-template-preview" data-template="Modern Business">Preview</button>
+                <button type="button" class="btn-template-use" data-template="Modern Business">Use Template →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- End #dash-view-templates -->
+
+      <!-- 4. ANALYTICS TAB VIEW -->
+      <div id="dash-view-analytics" class="dash-view-pane hidden">
+        <header class="dash-top-header">
+          <div class="dash-title-group">
+            <button type="button" class="btn-back-home" id="btn-analytics-back-overview">← Back to Overview</button>
+            <h1 class="dash-headline">Analytics</h1>
+            <p class="dash-subtitle">Understand how visitors discover and interact with your websites.</p>
+          </div>
+
+          <div class="dash-header-actions">
+            <div class="dash-filter-dropdown-wrap">
+              <select class="dash-select-input" id="analytics-site-filter">
+                <option value="all">All Websites (8)</option>
+                <option value="royal-traders-and-hardware">Royal Traders &amp; Hardware</option>
+                <option value="sayaji-hotel-vadodara">Sayaji Hotel Vadodara</option>
+                <option value="be-able-advance-rehab-studio">BE ABLE ADVANCE REHAB STUDIO</option>
+              </select>
+            </div>
+            <div class="chart-time-filter" id="analytics-time-filters">
+              <button type="button" class="btn-time-filter active" data-days="7">7 Days</button>
+              <button type="button" class="btn-time-filter" data-days="30">30 Days</button>
+              <button type="button" class="btn-time-filter" data-days="90">90 Days</button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Analytics 4 KPI Metric Summary Cards -->
+        <section class="overview-metrics-grid">
+          <div class="overview-metric-card">
+            <div class="metric-top-row">
+              <span class="metric-label">Monthly Visitors</span>
+              <div class="metric-icon-wrap icon-blue">👥</div>
+            </div>
+            <div class="metric-value-row">
+              <strong class="metric-big-num" id="an-metric-visitors">2,840</strong>
+              <span class="metric-sub-tag tag-green">+14.2%</span>
+            </div>
+            <span class="metric-footnote"><span class="demo-badge-inline">Demo data</span> Total unique visitors</span>
+          </div>
+
+          <div class="overview-metric-card">
+            <div class="metric-top-row">
+              <span class="metric-label">Page Views</span>
+              <div class="metric-icon-wrap icon-purple">📄</div>
+            </div>
+            <div class="metric-value-row">
+              <strong class="metric-big-num" id="an-metric-views">6,420</strong>
+              <span class="metric-sub-tag tag-purple">2.26 / user</span>
+            </div>
+            <span class="metric-footnote"><span class="demo-badge-inline">Demo data</span> Cumulative screen views</span>
+          </div>
+
+          <div class="overview-metric-card">
+            <div class="metric-top-row">
+              <span class="metric-label">Leads &amp; Inquiries</span>
+              <div class="metric-icon-wrap icon-green">🎯</div>
+            </div>
+            <div class="metric-value-row">
+              <strong class="metric-big-num" id="an-metric-leads">184</strong>
+              <span class="metric-sub-tag tag-cyan">+22 vs last cycle</span>
+            </div>
+            <span class="metric-footnote"><span class="demo-badge-inline">Demo data</span> Direct telephone &amp; forms</span>
+          </div>
+
+          <div class="overview-metric-card">
+            <div class="metric-top-row">
+              <span class="metric-label">Conversion Rate</span>
+              <div class="metric-icon-wrap icon-orange">⚡</div>
+            </div>
+            <div class="metric-value-row">
+              <strong class="metric-big-num" id="an-metric-rate">6.5%</strong>
+              <span class="metric-sub-tag tag-gold">+0.8% avg</span>
+            </div>
+            <span class="metric-footnote"><span class="demo-badge-inline">Demo data</span> Visitor-to-lead ratio</span>
+          </div>
+        </section>
+
+        <!-- Main Analytics Content Grid -->
+        <div class="overview-content-grid">
+          <!-- Left Column (Wide) -->
+          <div class="overview-main-col">
+            <!-- Traffic Chart -->
+            <div class="overview-card activity-chart-card">
+              <div class="overview-card-header">
+                <div>
+                  <div class="card-title-row">
+                    <h3 class="overview-card-title">Visitors &amp; Page Views</h3>
+                    <span class="demo-badge-pill">Demo telemetry</span>
+                  </div>
+                  <p class="overview-card-sub">Daily trend comparison across active websites</p>
+                </div>
+                <div class="chart-legend-inline">
+                  <span class="legend-item"><span class="ribbon-dot dot-blue"></span> Visitors</span>
+                  <span class="legend-item"><span class="ribbon-dot dot-purple"></span> Page Views</span>
+                </div>
+              </div>
+
+              <!-- SVG Dual-Curve Area Chart -->
+              <div class="svg-chart-container">
+                <svg id="analytics-traffic-svg" viewBox="0 0 700 220" class="responsive-svg-chart">
+                  <defs>
+                    <linearGradient id="grad-an-vis" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.32" />
+                      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.0" />
+                    </linearGradient>
+                    <linearGradient id="grad-an-views" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.25" />
+                      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  <line x1="40" y1="30" x2="680" y2="30" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+                  <line x1="40" y1="80" x2="680" y2="80" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+                  <line x1="40" y1="130" x2="680" y2="130" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+                  <line x1="40" y1="180" x2="680" y2="180" stroke="rgba(255,255,255,0.12)" />
+
+                  <text x="32" y="34" text-anchor="end" fill="#64748b" font-size="10">900</text>
+                  <text x="32" y="84" text-anchor="end" fill="#64748b" font-size="10">600</text>
+                  <text x="32" y="134" text-anchor="end" fill="#64748b" font-size="10">300</text>
+                  <text x="32" y="184" text-anchor="end" fill="#64748b" font-size="10">0</text>
+
+                  <path id="an-chart-area-views" d="M 60,140 Q 160,95 260,115 T 460,65 T 660,70 L 660,180 L 60,180 Z" fill="url(#grad-an-views)" />
+                  <path id="an-chart-line-views" d="M 60,140 Q 160,95 260,115 T 460,65 T 660,70" fill="none" stroke="#a855f7" stroke-width="2.5" />
+
+                  <path id="an-chart-area-visitors" d="M 60,160 Q 160,125 260,135 T 460,95 T 660,105 L 660,180 L 60,180 Z" fill="url(#grad-an-vis)" />
+                  <path id="an-chart-line-visitors" d="M 60,160 Q 160,125 260,135 T 460,95 T 660,105" fill="none" stroke="#0ea5e9" stroke-width="2.5" />
+
+                  <g id="an-chart-x-labels" fill="#64748b" font-size="11">
+                    <text x="60" y="202" text-anchor="middle">Day 1</text>
+                    <text x="160" y="202" text-anchor="middle">Day 2</text>
+                    <text x="260" y="202" text-anchor="middle">Day 3</text>
+                    <text x="360" y="202" text-anchor="middle">Day 4</text>
+                    <text x="460" y="202" text-anchor="middle">Day 5</text>
+                    <text x="560" y="202" text-anchor="middle">Day 6</text>
+                    <text x="660" y="202" text-anchor="middle">Day 7</text>
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Top Performing Websites Table -->
+            <div class="overview-card">
+              <div class="overview-card-header">
+                <div>
+                  <h3 class="overview-card-title">Top Performing Websites</h3>
+                  <p class="overview-card-sub">Traffic performance ranked by customer engagement</p>
+                </div>
+                <span class="demo-badge-pill">Demo telemetry</span>
+              </div>
+
+              <div class="dash-table-container">
+                <table class="dash-performance-table">
+                  <thead>
+                    <tr>
+                      <th>Website</th>
+                      <th>Visitors</th>
+                      <th>Views</th>
+                      <th>Leads</th>
+                      <th>Conversion</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="table-site-name">
+                          <strong>Royal Traders &amp; Hardware</strong>
+                          <span>/sites/royal-traders-and-hardware</span>
+                        </div>
+                      </td>
+                      <td>1,120</td>
+                      <td>2,540</td>
+                      <td><span class="badge-leads">78 leads</span></td>
+                      <td><strong>7.0%</strong></td>
+                      <td><a href="/sites/royal-traders-and-hardware" target="_blank" class="table-action-link">Open ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="table-site-name">
+                          <strong>Sayaji Hotel Vadodara</strong>
+                          <span>/sites/sayaji-hotel-vadodara-vadodara-gujarat-390007</span>
+                        </div>
+                      </td>
+                      <td>980</td>
+                      <td>2,210</td>
+                      <td><span class="badge-leads">64 leads</span></td>
+                      <td><strong>6.5%</strong></td>
+                      <td><a href="/sites/sayaji-hotel-vadodara-vadodara-gujarat-390007" target="_blank" class="table-action-link">Open ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="table-site-name">
+                          <strong>BE ABLE ADVANCE REHAB STUDIO</strong>
+                          <span>/sites/be-able-advance-rehab-studio-llp-vadodara</span>
+                        </div>
+                      </td>
+                      <td>540</td>
+                      <td>1,190</td>
+                      <td><span class="badge-leads">31 leads</span></td>
+                      <td><strong>5.7%</strong></td>
+                      <td><a href="/sites/be-able-advance-rehab-studio-llp-vadodara" target="_blank" class="table-action-link">Open ↗</a></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="table-site-name">
+                          <strong>Apex Tooling Works</strong>
+                          <span>/sites/apex-tooling-works</span>
+                        </div>
+                      </td>
+                      <td>200</td>
+                      <td>480</td>
+                      <td><span class="badge-leads">11 leads</span></td>
+                      <td><strong>5.5%</strong></td>
+                      <td><span class="table-action-muted">Local</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="overview-side-col">
+            <!-- Lead Activity Breakdown -->
+            <div class="overview-card">
+              <div class="card-title-row">
+                <h3 class="overview-card-title">Lead Activity</h3>
+                <span class="demo-badge-pill">Demo data</span>
+              </div>
+              <p class="overview-card-sub">Actions taken by potential customers</p>
+
+              <div class="lead-breakdown-list">
+                <div class="lead-item">
+                  <div class="lead-item-header">
+                    <span>📞 Direct Phone Clicks</span>
+                    <strong>78 (42%)</strong>
+                  </div>
+                  <div class="progress-bar-thin">
+                    <div class="progress-bar-fill fill-cyan" style="width: 42%;"></div>
+                  </div>
+                </div>
+
+                <div class="lead-item">
+                  <div class="lead-item-header">
+                    <span>💬 WhatsApp Quick Chat</span>
+                    <strong>52 (28%)</strong>
+                  </div>
+                  <div class="progress-bar-thin">
+                    <div class="progress-bar-fill fill-green" style="width: 28%;"></div>
+                  </div>
+                </div>
+
+                <div class="lead-item">
+                  <div class="lead-item-header">
+                    <span>📍 Get Directions (Maps)</span>
+                    <strong>39 (21%)</strong>
+                  </div>
+                  <div class="progress-bar-thin">
+                    <div class="progress-bar-fill fill-purple" style="width: 21%;"></div>
+                  </div>
+                </div>
+
+                <div class="lead-item">
+                  <div class="lead-item-header">
+                    <span>📝 Form / Quote Submissions</span>
+                    <strong>15 (9%)</strong>
+                  </div>
+                  <div class="progress-bar-thin">
+                    <div class="progress-bar-fill fill-orange" style="width: 9%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Traffic Sources -->
+            <div class="overview-card">
+              <div class="card-title-row">
+                <h3 class="overview-card-title">Traffic Sources</h3>
+                <span class="demo-badge-pill">Demo data</span>
+              </div>
+              <p class="overview-card-sub">Discovery origins across imported listings</p>
+
+              <div class="source-bars-list">
+                <div class="source-row">
+                  <span class="source-name">Google Search &amp; Maps</span>
+                  <div class="source-bar-wrap">
+                    <div class="source-fill fill-cyan" style="width: 58%;"></div>
+                  </div>
+                  <span class="source-pct">58%</span>
+                </div>
+
+                <div class="source-row">
+                  <span class="source-name">Direct URL / QR Code</span>
+                  <div class="source-bar-wrap">
+                    <div class="source-fill fill-purple" style="width: 24%;"></div>
+                  </div>
+                  <span class="source-pct">24%</span>
+                </div>
+
+                <div class="source-row">
+                  <span class="source-name">Social Media</span>
+                  <div class="source-bar-wrap">
+                    <div class="source-fill fill-green" style="width: 12%;"></div>
+                  </div>
+                  <span class="source-pct">12%</span>
+                </div>
+
+                <div class="source-row">
+                  <span class="source-name">Local Directories</span>
+                  <div class="source-bar-wrap">
+                    <div class="source-fill fill-orange" style="width: 6%;"></div>
+                  </div>
+                  <span class="source-pct">6%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Device Breakdown -->
+            <div class="overview-card">
+              <div class="card-title-row">
+                <h3 class="overview-card-title">Device Breakdown</h3>
+                <span class="demo-badge-pill">Demo data</span>
+              </div>
+              <div class="device-pills-row">
+                <div class="device-pill-stat">
+                  <span class="device-icon">📱</span>
+                  <strong>68%</strong>
+                  <span>Mobile</span>
+                </div>
+                <div class="device-pill-stat">
+                  <span class="device-icon">💻</span>
+                  <strong>27%</strong>
+                  <span>Desktop</span>
+                </div>
+                <div class="device-pill-stat">
+                  <span class="device-icon">📟</span>
+                  <strong>5%</strong>
+                  <span>Tablet</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- End #dash-view-analytics -->
+
+      <!-- 5. SETTINGS TAB VIEW -->
+      <div id="dash-view-settings" class="dash-view-pane hidden">
+        <header class="dash-top-header">
+          <div class="dash-title-group">
+            <button type="button" class="btn-back-home" id="btn-settings-back-overview">← Back to Overview</button>
+            <h1 class="dash-headline">Settings</h1>
+            <p class="dash-subtitle">Manage your PagePilot account, workspace, integrations and preferences.</p>
+          </div>
+        </header>
+
+        <!-- Two-Column Settings Container -->
+        <div class="settings-container">
+          <!-- Left Navigation Sub-Sidebar -->
+          <nav class="settings-nav-sidebar" id="settings-nav">
+            <button type="button" class="settings-nav-item active" data-tab="profile">
+              <span class="settings-item-icon">👤</span>
+              <span>Profile</span>
+            </button>
+            <button type="button" class="settings-nav-item" data-tab="workspace">
+              <span class="settings-item-icon">🏢</span>
+              <span>Workspace</span>
+            </button>
+            <button type="button" class="settings-nav-item" data-tab="defaults">
+              <span class="settings-item-icon">🌐</span>
+              <span>Website Defaults</span>
+            </button>
+            <button type="button" class="settings-nav-item" data-tab="integrations">
+              <span class="settings-item-icon">🔌</span>
+              <span>Integrations</span>
+            </button>
+            <button type="button" class="settings-nav-item" data-tab="notifications">
+              <span class="settings-item-icon">🔔</span>
+              <span>Notifications</span>
+            </button>
+            <button type="button" class="settings-nav-item" data-tab="security">
+              <span class="settings-item-icon">🔒</span>
+              <span>Security</span>
+            </button>
+            <button type="button" class="settings-nav-item" data-tab="billing">
+              <span class="settings-item-icon">💳</span>
+              <span>Billing</span>
+            </button>
+            <div class="settings-nav-divider"></div>
+            <button type="button" class="settings-nav-item text-danger" data-tab="danger">
+              <span class="settings-item-icon">⚠️</span>
+              <span>Danger Zone</span>
+            </button>
+          </nav>
+
+          <!-- Right Content Panels -->
+          <div class="settings-panels-wrap">
+            <!-- 1. Profile Panel -->
+            <div class="settings-panel active" id="settings-panel-profile">
+              <div class="settings-panel-header">
+                <h3>Admin Profile</h3>
+                <p>Personal credentials and active administrative identity.</p>
+              </div>
+
+              <div class="settings-avatar-card">
+                <div class="user-avatar-pill avatar-lg">AD</div>
+                <div class="avatar-info">
+                  <strong>Administrator</strong>
+                  <span>Active Workspace Administrator · Master Access</span>
+                </div>
+              </div>
+
+              <form id="form-settings-profile" class="settings-form" onsubmit="return false;">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="settings-profile-name">Full Name</label>
+                    <input type="text" id="settings-profile-name" class="form-input" value="Administrator" />
+                  </div>
+                  <div class="form-group">
+                    <label for="settings-profile-email">Email Address</label>
+                    <input type="email" id="settings-profile-email" class="form-input" value="admin@pagepilot.com" readonly title="Primary administrator email" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Role &amp; Permissions</label>
+                  <input type="text" class="form-input" value="Workspace Owner (Full Admin Privileges)" readonly />
+                </div>
+
+                <div class="settings-btn-row">
+                  <button type="button" class="btn-dash-create" id="btn-save-profile">
+                    <span>Save Changes</span>
+                  </button>
+                  <button type="button" class="btn-dash-secondary" id="btn-trigger-change-pass">
+                    <span>Change Password</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- 2. Workspace Panel -->
+            <div class="settings-panel hidden" id="settings-panel-workspace">
+              <div class="settings-panel-header">
+                <h3>Workspace Settings</h3>
+                <p>Manage your agency branding, domain, and collaborator access.</p>
+              </div>
+
+              <div class="settings-form">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label>Workspace Name</label>
+                    <input type="text" class="form-input" value="PagePilot Studio" />
+                  </div>
+                  <div class="form-group">
+                    <label>Workspace Type</label>
+                    <select class="form-input">
+                      <option selected>Agency / Production Studio</option>
+                      <option>Individual Business Owner</option>
+                      <option>Enterprise</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Workspace Subdomain URL</label>
+                  <div class="input-prefix-wrap">
+                    <span class="prefix-label">https://</span>
+                    <input type="text" class="form-input" value="pagepilot.sites/admin" readonly />
+                  </div>
+                </div>
+
+                <div class="workspace-team-box">
+                  <div class="team-header-row">
+                    <div>
+                      <h4>Team Members</h4>
+                      <p>Collaborators with management access to imported websites</p>
+                    </div>
+                    <span class="badge-disabled">Coming in Team Edition</span>
+                  </div>
+                  
+                  <div class="team-member-row">
+                    <div class="team-member-info">
+                      <div class="user-avatar-pill avatar-sm">AD</div>
+                      <div>
+                        <strong>Administrator</strong>
+                        <span>admin@pagepilot.com</span>
+                      </div>
+                    </div>
+                    <span class="role-pill">Owner</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Website Defaults Panel -->
+            <div class="settings-panel hidden" id="settings-panel-defaults">
+              <div class="settings-panel-header">
+                <h3>Website Defaults</h3>
+                <p>Baseline layouts and components applied to newly imported Google listings.</p>
+              </div>
+
+              <div class="settings-form">
+                <div class="form-group">
+                  <label>Default Layout Template</label>
+                  <select class="form-input" id="settings-default-template">
+                    <option selected>Modern Business &amp; Industrial</option>
+                    <option>Restaurant &amp; Dining</option>
+                    <option>Salon &amp; Aesthetics</option>
+                    <option>Retail &amp; Showrooms</option>
+                    <option>Hotels &amp; Hospitality</option>
+                    <option>Healthcare &amp; Clinics</option>
+                    <option>Professional Services</option>
+                  </select>
+                  <span class="field-hint">PagePilot automatically adapts category-specific layouts if category detection is active.</span>
+                </div>
+
+                <div class="form-group">
+                  <label>Default Brand Accent Palette</label>
+                  <div class="color-swatches-row">
+                    <button type="button" class="swatch-btn active" style="background:#0ea5e9;" title="Cyber Cyan"></button>
+                    <button type="button" class="swatch-btn" style="background:#3b82f6;" title="Cobalt Blue"></button>
+                    <button type="button" class="swatch-btn" style="background:#8b5cf6;" title="Royal Purple"></button>
+                    <button type="button" class="swatch-btn" style="background:#10b981;" title="Emerald Green"></button>
+                    <button type="button" class="swatch-btn" style="background:#f59e0b;" title="Warm Amber"></button>
+                  </div>
+                </div>
+
+                <div class="toggles-list-card">
+                  <h4>Default Content Sections</h4>
+                  <p>Selected modules are built into every generated website:</p>
+
+                  <label class="toggle-row">
+                    <span>Embed verified Google Reviews &amp; Star Rating</span>
+                    <input type="checkbox" checked />
+                  </label>
+
+                  <label class="toggle-row">
+                    <span>Embed Interactive Google Map</span>
+                    <input type="checkbox" checked />
+                  </label>
+
+                  <label class="toggle-row">
+                    <span>Display Operating / Business Hours</span>
+                    <input type="checkbox" checked />
+                  </label>
+
+                  <label class="toggle-row">
+                    <span>Direct Click-to-Call Phone Action Button</span>
+                    <input type="checkbox" checked />
+                  </label>
+
+                  <label class="toggle-row">
+                    <span>WhatsApp Quick Connect Button</span>
+                    <input type="checkbox" checked />
+                  </label>
+
+                  <label class="toggle-row">
+                    <span>One-Click Get Directions Button</span>
+                    <input type="checkbox" checked />
+                  </label>
+                </div>
+
+                <span class="field-hint">Available in website editor. Individual websites can be tailored independently anytime.</span>
+              </div>
+            </div>
+
+            <!-- 4. Integrations Panel -->
+            <div class="settings-panel hidden" id="settings-panel-integrations">
+              <div class="settings-panel-header">
+                <h3>Connected Services &amp; Integrations</h3>
+                <p>Status of external APIs powering Google data scraping and AI generation.</p>
+              </div>
+
+              <div class="integrations-list">
+                <!-- SerpAPI Card -->
+                <div class="integration-card">
+                  <div class="integration-top">
+                    <div class="integration-brand">
+                      <span class="integration-icon">🗺️</span>
+                      <div>
+                        <h4>SerpAPI</h4>
+                        <span class="integration-role">Google Maps, Place Details &amp; Review Fetching</span>
+                      </div>
+                    </div>
+                    <span class="badge-plan-status">● Connected · Free Plan (250/mo)</span>
+                  </div>
+                  <div class="integration-body">
+                    <div class="masked-key-row">
+                      <span class="key-label">API Key:</span>
+                      <code class="masked-code">cd677••••••••••••••••••••••••••••</code>
+                      <span class="env-tag">Stored in .env</span>
+                    </div>
+                    <div class="integration-actions">
+                      <button type="button" class="btn-integration-action" onclick="switchDashboardTab('usage')">View Quotas</button>
+                      <button type="button" class="btn-integration-action" onclick="testIntegrationConnection('SerpAPI')">Test Connection</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Google AI Studio Card -->
+                <div class="integration-card">
+                  <div class="integration-top">
+                    <div class="integration-brand">
+                      <span class="integration-icon">✨</span>
+                      <div>
+                        <h4>Google AI Studio (Gemini)</h4>
+                        <span class="integration-role">Website Copywriting &amp; Content Synthesis</span>
+                      </div>
+                    </div>
+                    <span class="badge-plan-status badge-gemini">● Connected · 1,500 RPD Free</span>
+                  </div>
+                  <div class="integration-body">
+                    <div class="masked-key-row">
+                      <span class="key-label">Active Model:</span>
+                      <code class="masked-code">gemini-3.5-flash-lite</code>
+                      <span class="env-tag">Stored in .env</span>
+                    </div>
+                    <div class="integration-actions">
+                      <button type="button" class="btn-integration-action" onclick="switchDashboardTab('usage')">View Quotas</button>
+                      <button type="button" class="btn-integration-action" onclick="testIntegrationConnection('Gemini')">Test Connection</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cloudflare Pages Card -->
+                <div class="integration-card">
+                  <div class="integration-top">
+                    <div class="integration-brand">
+                      <span class="integration-icon">⚡</span>
+                      <div>
+                        <h4>Cloudflare Edge CDN</h4>
+                        <span class="integration-role">Static Website Delivery &amp; SSL Certificates</span>
+                      </div>
+                    </div>
+                    <span class="badge-plan-status badge-green">● 100% Online</span>
+                  </div>
+                  <div class="integration-body">
+                    <div class="masked-key-row">
+                      <span class="key-label">Status:</span>
+                      <span class="highlight-green">TLS 1.3 Active · Edge Caching Enabled</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Notifications Panel -->
+            <div class="settings-panel hidden" id="settings-panel-notifications">
+              <div class="settings-panel-header">
+                <h3>Notification Preferences</h3>
+                <p>Configure operational alerts and generation status updates.</p>
+              </div>
+
+              <div class="toggles-list-card">
+                <h4>System Alerts</h4>
+                <p>Manage in-app and email alert preferences:</p>
+
+                <label class="toggle-row">
+                  <div>
+                    <strong>Website Generation Completed</strong>
+                    <p class="toggle-sub">Receive instant toast alert when AI finishes compiling a site</p>
+                  </div>
+                  <input type="checkbox" id="notif-gen-done" checked />
+                </label>
+
+                <label class="toggle-row">
+                  <div>
+                    <strong>Website Published to Web</strong>
+                    <p class="toggle-sub">Notification when custom domain or live link is deployed</p>
+                  </div>
+                  <input type="checkbox" id="notif-pub-done" checked />
+                </label>
+
+                <label class="toggle-row">
+                  <div>
+                    <strong>API Quota Warnings</strong>
+                    <p class="toggle-sub">Alert when SerpAPI or Gemini usage exceeds 80% capacity</p>
+                  </div>
+                  <input type="checkbox" id="notif-quota-warn" checked />
+                </label>
+
+                <label class="toggle-row">
+                  <div>
+                    <strong>Weekly Traffic Summary Digest</strong>
+                    <p class="toggle-sub">Aggregated visitor performance across all live websites</p>
+                  </div>
+                  <input type="checkbox" id="notif-weekly-digest" />
+                </label>
+
+                <div class="settings-btn-row" style="margin-top: 1.5rem;">
+                  <button type="button" class="btn-dash-create" id="btn-save-notifs">
+                    <span>Save Notification Preferences</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. Security Panel -->
+            <div class="settings-panel hidden" id="settings-panel-security">
+              <div class="settings-panel-header">
+                <h3>Security &amp; Sessions</h3>
+                <p>Manage cryptographic authentication and active administrator sessions.</p>
+              </div>
+
+              <div class="security-items-list">
+                <div class="security-card">
+                  <div class="sec-header-row">
+                    <div>
+                      <h4>Active Admin Session</h4>
+                      <p>Authenticated via HMAC-SHA256 encrypted cryptographic token</p>
+                    </div>
+                    <span class="badge-plan-status">Active Now</span>
+                  </div>
+                  <div class="sec-details-row">
+                    <span>Client: Chrome on Windows</span>
+                    <span>·</span>
+                    <span>Port: 3000 (Localhost)</span>
+                    <span>·</span>
+                    <span>Valid for: 7 Days</span>
+                  </div>
+                  <button type="button" class="btn-dash-secondary" id="btn-signout-all-devices" style="margin-top:1rem;">
+                    Sign out of all sessions
+                  </button>
+                </div>
+
+                <div class="security-card">
+                  <div class="sec-header-row">
+                    <div>
+                      <h4>Two-Factor Authentication (2FA)</h4>
+                      <p>Require verification codes from an authenticator app upon sign-in.</p>
+                    </div>
+                    <span class="badge-disabled">Coming Soon</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Billing Panel -->
+            <div class="settings-panel hidden" id="settings-panel-billing">
+              <div class="settings-panel-header">
+                <h3>Plan &amp; Billing</h3>
+                <p>Review current subscription status and workspace resource limits.</p>
+              </div>
+
+              <div class="billing-hero-card">
+                <div class="billing-top">
+                  <div>
+                    <span class="billing-badge">CURRENT PLAN</span>
+                    <h3>100% Free Tier · Lifetime Access</h3>
+                    <p>Ideal for local business owners and prototyping agencies.</p>
+                  </div>
+                  <div class="billing-price-box">
+                    <strong class="price-val">$0.00</strong>
+                    <span class="price-sub">/ month</span>
+                  </div>
+                </div>
+
+                <div class="billing-features-grid">
+                  <div class="b-feat">✓ Up to 125 Full Website Generations / Month</div>
+                  <div class="b-feat">✓ 1,500 Daily Google Gemini AI Requests</div>
+                  <div class="b-feat">✓ Global Cloudflare Edge CDN Hosting</div>
+                  <div class="b-feat">✓ Full Visual Editor Access</div>
+                  <div class="b-feat">✓ Real-Time API Quota Telemetry</div>
+                  <div class="b-feat">✓ Unlimited Instant Previews</div>
+                </div>
+
+                <div class="billing-footer-note">
+                  <p>Billing management will be available when paid agency plans are enabled.</p>
+                  <button type="button" class="btn-dash-create disabled-btn" title="Coming soon">Upgrade Plan</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8. Danger Zone Panel -->
+            <div class="settings-panel hidden" id="settings-panel-danger">
+              <div class="settings-panel-header">
+                <h3 class="text-danger">Danger Zone</h3>
+                <p>Irreversible actions for your workspace and generated website data.</p>
+              </div>
+
+              <div class="danger-box">
+                <div class="danger-row">
+                  <div>
+                    <strong>Delete Generated Websites</strong>
+                    <p>Permanently remove all compiled HTML static sites from disk storage.</p>
+                  </div>
+                  <button type="button" class="btn-danger disabled-btn" title="Protected in admin mode">Delete All Websites</button>
+                </div>
+
+                <div class="danger-divider"></div>
+
+                <div class="danger-row">
+                  <div>
+                    <strong>Delete Workspace &amp; Account</strong>
+                    <p>Permanently terminate your PagePilot workspace and invalidate all admin keys.</p>
+                  </div>
+                  <button type="button" class="btn-danger disabled-btn" title="Protected in admin mode">Delete Workspace</button>
+                </div>
+
+                <p class="danger-note">
+                  ⚠️ Workspace deletion is safely disabled in standard administrator mode to prevent accidental data loss.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- End #dash-view-settings -->
+    </main>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 3. INTERACTIVE MODALS                     -->
+  <!-- ══════════════════════════════════════════ -->
+
+  <!-- Site Visual Editor Modal -->
+  <div class="modal-backdrop hidden" id="editor-modal">
+    <div class="modal-dialog modal-editor">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="badge-editor">✦ Visual Editor</div>
+          <h3 id="editor-site-name">Customize Website</h3>
+          <span class="editor-subtext" id="editor-slug-display">/sites/example</span>
+        </div>
+        <button type="button" class="btn-close-modal" id="btn-close-editor">✕</button>
+      </div>
+
+      <div class="modal-body editor-body-split">
+        <!-- Left: Quick Editor Form -->
+        <div class="editor-form-col">
+          <div class="form-group">
+            <label for="edit-field-name">Business Name</label>
+            <input type="text" id="edit-field-name" class="modal-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-field-category">Category / Badge</label>
+            <input type="text" id="edit-field-category" class="modal-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-field-headline">Hero Headline</label>
+            <textarea id="edit-field-headline" class="modal-textarea" rows="2"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-field-phone">Direct Phone</label>
+            <input type="text" id="edit-field-phone" class="modal-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-field-address">Physical Address</label>
+            <textarea id="edit-field-address" class="modal-textarea" rows="2"></textarea>
+          </div>
+
+          <div class="editor-hint-box">
+            <span>💡 Changes update directly in your live generated HTML file.</span>
+          </div>
+        </div>
+
+        <!-- Right: Real-time Live Frame Preview -->
+        <div class="editor-preview-col">
+          <div class="preview-frame-header">
+            <span>Live Preview</span>
+            <button type="button" id="btn-reload-preview" class="btn-micro">↻ Reload</button>
+          </div>
+          <iframe id="editor-live-iframe" class="editor-iframe" src="about:blank"></iframe>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-ghost" id="btn-cancel-editor">Cancel</button>
+        <button type="button" class="btn-primary-action" id="btn-save-editor">
+          <span>Save Changes</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Publish Modal -->
+  <div class="modal-backdrop hidden" id="publish-modal">
+    <div class="modal-dialog modal-publish">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="badge-publish">🚀 Instant Deployment</div>
+          <h3>Publish Website to Live Web</h3>
+          <span class="editor-subtext" id="publish-site-name">Site Name</span>
+        </div>
+        <button type="button" class="btn-close-modal" id="btn-close-publish">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="publish-option-box">
+          <div class="option-header">
+            <strong>Custom Domain or Edge Subdomain</strong>
+            <span class="pill-badge">Free SSL Included</span>
+          </div>
+          <div class="domain-input-wrap">
+            <span class="domain-prefix">https://</span>
+            <input type="text" id="publish-domain-input" class="domain-input" placeholder="mybusiness.com or your-slug" />
+          </div>
+          <p class="domain-helper-text">
+            Default Edge URL: <span class="highlight-code" id="publish-default-url">https://slug.pagepilot.sites</span>
+          </p>
+        </div>
+
+        <div class="publish-steps-checklist">
+          <div class="pub-check-item">
+            <span class="check-icon">✓</span>
+            <span>Cloudflare Edge CDN caching configured</span>
+          </div>
+          <div class="pub-check-item">
+            <span class="check-icon">✓</span>
+            <span>Automatic Mobile &amp; Desktop optimization</span>
+          </div>
+          <div class="pub-check-item">
+            <span class="check-icon">✓</span>
+            <span>High-resolution Google photo proxying active</span>
+          </div>
+          <div class="pub-check-item">
+            <span class="check-icon">✓</span>
+            <span>Zero-downtime instant deployment</span>
+          </div>
+        </div>
+
+        <!-- Deployed Success Box -->
+        <div class="deploy-success-box hidden" id="deploy-success-box">
+          <div class="success-icon">🎉</div>
+          <h4>Your website is officially live!</h4>
+          <a href="#" target="_blank" class="live-url-link" id="deployed-live-link">https://example.pagepilot.sites ↗</a>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-ghost" id="btn-cancel-publish">Close</button>
+        <button type="button" class="btn-primary-action" id="btn-confirm-publish">
+          <span>Publish Now →</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 3. ADMIN LOGIN MODAL                       -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="modal-backdrop hidden" id="login-modal">
+    <div class="modal-dialog modal-login-split">
+      <button type="button" class="btn-close-modal btn-close-modal-split" id="btn-close-login" title="Close modal">✕</button>
+      
+      <!-- Left Panel: Brand & Value Proposition -->
+      <div class="login-split-brand">
+        <div class="split-brand-header">
+          <div class="brand-symbol">✦</div>
+          <span class="brand-text">Page<span class="brand-gradient">Pilot</span></span>
+        </div>
+
+        <div class="split-brand-content">
+          <span class="split-brand-badge">✦ Instant Website Builder</span>
+          <h2 class="split-brand-title">Build your website from your Google listing.</h2>
+          <p class="split-brand-desc">
+            Turn your business profile into a professional website in minutes. Photos, verified reviews, services, and location synced in real time.
+          </p>
+
+          <!-- 3-Step Visual Conversion Flow -->
+          <div class="login-flow-pipeline">
+            <div class="pipeline-step">
+              <span class="pipeline-icon">📍</span>
+              <div class="pipeline-text">
+                <strong>Google Business Profile</strong>
+                <span>Authentic business data &amp; reviews</span>
+              </div>
+            </div>
+            <div class="pipeline-arrow">↓</div>
+            <div class="pipeline-step pipeline-step-ai">
+              <span class="pipeline-icon">✦</span>
+              <div class="pipeline-text">
+                <strong>PagePilot AI Engine</strong>
+                <span>Copywriting, structure &amp; styles</span>
+              </div>
+            </div>
+            <div class="pipeline-arrow">↓</div>
+            <div class="pipeline-step pipeline-step-web">
+              <span class="pipeline-icon">🌐</span>
+              <div class="pipeline-text">
+                <strong>Professional Website</strong>
+                <span>Mobile-ready, edge-deployed &amp; live</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="split-feature-pills">
+            <span>⚡ Zero code required</span>
+            <span>📱 100% Mobile Ready</span>
+            <span>🔒 Secure Token Auth</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Login Card -->
+      <div class="login-split-card">
+        <div class="login-card-header">
+          <div class="badge-login">✦ Secure Admin Portal</div>
+          <h3 class="login-card-title">Welcome back</h3>
+          <p class="login-card-subtitle">Sign in to continue to PagePilot.</p>
+        </div>
+
+        <!-- Login Alert Banner -->
+        <div class="login-alert hidden" id="login-error-alert" role="alert">
+          <span class="alert-icon">⚠️</span>
+          <span class="alert-message" id="login-error-message">Invalid credentials. Please try again.</span>
+        </div>
+
+        <!-- Quick Demo Credential Helper -->
+        <div class="demo-credentials-box">
+          <div class="demo-cred-header">
+            <span class="sparkle-icon">🔑</span>
+            <strong>Administrator Credentials:</strong>
+          </div>
+          <div class="demo-cred-body">
+            <div class="cred-item">
+              <span class="cred-label">Login ID:</span>
+              <code id="demo-user-val">admin@pagepilot.com</code>
+            </div>
+            <div class="cred-item">
+              <span class="cred-label">Password:</span>
+              <code id="demo-pass-val">Admin@PagePilot2026!</code>
+            </div>
+          </div>
+          <button type="button" class="btn-quick-fill" id="btn-quick-fill-creds">
+            ⚡ One-Click Fill Admin Credentials
+          </button>
+        </div>
+
+        <form id="login-form" class="login-form" onsubmit="return false;">
+          <div class="form-group">
+            <label for="login-username">Admin Email / Username</label>
+            <div class="input-with-icon">
+              <span class="field-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </span>
+              <input 
+                type="text" 
+                id="login-username" 
+                class="login-input form-input" 
+                placeholder="admin@pagepilot.com" 
+                required 
+                autocomplete="username"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="label-with-forgot">
+              <label for="login-password">Password</label>
+              <button type="button" class="link-forgot-password" id="btn-forgot-password">Forgot password?</button>
+            </div>
+            <div class="input-with-icon">
+              <span class="field-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </span>
+              <input 
+                type="password" 
+                id="login-password" 
+                class="login-input form-input" 
+                placeholder="••••••••••••" 
+                required 
+                autocomplete="current-password"
+              />
+              <button type="button" class="btn-toggle-password" id="btn-toggle-password" title="Toggle password visibility" aria-label="Toggle password visibility">
+                <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="login-form-options">
+            <label class="remember-me-label">
+              <input type="checkbox" id="login-remember" checked />
+              <span>Keep me signed in</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-login-submit" id="btn-submit-login">
+            <span class="btn-text">Sign In to Dashboard →</span>
+            <span class="spinner-sm hidden" id="login-spinner"></span>
+          </button>
+        </form>
+
+        <div class="login-footer-links">
+          <p class="login-signup-note">
+            Don't have an account? <button type="button" class="link-inline-cta" id="btn-login-create-account">Create your account</button>
+          </p>
+          <div class="login-legal-links">
+            <a href="#features">Privacy Policy</a>
+            <span>·</span>
+            <a href="#features">Terms of Service</a>
+            <span>·</span>
+            <a href="#features">Security</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template Preview Modal -->
+  <div class="modal-backdrop hidden" id="template-preview-modal">
+    <div class="modal-dialog modal-preview-tmpl">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="badge-editor">✦ Template Preview</div>
+          <h3 id="tmpl-preview-title">Modern Business &amp; Industrial</h3>
+          <span class="editor-subtext" id="tmpl-preview-cat">Category: Modern Business</span>
+        </div>
+        <button type="button" class="btn-close-modal" id="btn-close-tmpl-preview">✕</button>
+      </div>
+      <div class="modal-body" style="padding: 1rem 1.5rem;">
+        <div class="preview-browser-frame">
+          <div class="preview-iframe-wrap">
+            <iframe id="tmpl-preview-iframe" src="/sites/royal-traders-and-hardware" style="width:100%; height:450px; border:none; border-radius:12px; background:#0f172a;"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
+        <button type="button" class="btn-dash-secondary" id="btn-tmpl-modal-cancel">Close</button>
+        <button type="button" class="btn-dash-create" id="btn-tmpl-modal-use">Use This Template →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Toast Notification Banner -->
+  <div class="dash-toast hidden" id="dash-toast" role="status" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <span class="toast-text" id="dash-toast-text">Settings updated successfully!</span>
+  </div>
+
+  <script src="/app.js?v=7"></script>
+</body>
+</html>

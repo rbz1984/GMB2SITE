@@ -1,0 +1,4 @@
+{
+  "watch": ["server.js", "generator/"],
+  "ignore": ["sites/*", "public/*", "test/*", "node_modules/*"]
+}
