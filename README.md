@@ -51,12 +51,36 @@ Paste a Google Maps URL or Place ID → get a live, AI-written single-page busin
 | Maps Embed API | Unlimited | 1 embed per site |
 | Cloudflare Pages | Unlimited bandwidth | Hosting |
 
-## Deploying to Cloudflare Pages
+## Host Deployment (systemd + Nginx)
 
-1. Push your repo to GitHub
-2. Go to [pages.cloudflare.com](https://pages.cloudflare.com) → Create application → Connect to Git
-3. Add all `.env` variables as Cloudflare Pages environment variables
-4. Deploy — your sites will be at `your-project.pages.dev/sites/{slug}`
+PagePilot runs directly on the Linux host as a systemd service (`pagepilot.service`), allowing it to provision Nginx vhosts and SSL certificates directly to `/etc/nginx` and `/var/www`:
+
+```ini
+[Unit]
+Description=PagePilot GMB Web App
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/amolw.xyz/gmb2site
+ExecStart=/usr/bin/node server.js
+Restart=always
+EnvironmentFile=/var/www/amolw.xyz/gmb2site/.env
+Environment=PORT=8210
+
+[Install]
+WantedBy=multi-user.target
+```
+
+## Domain Publishing
+
+When a site is published:
+1. Subdomain is extracted from the business name (e.g. `Mediterranean Foods` → `mediterranean-foods.amolw.xyz`).
+2. Public docroot is created at `/var/www/<domain>/<subdomain>/public/index.html`.
+3. Nginx vhost is written to `/etc/nginx/sites-available/<fqdn>.conf` with SSL + HTTPS redirect and symlinked to `/etc/nginx/sites-enabled/`.
+4. Cloudflare DNS A record is automatically created using `CLOUDFLARE_API_TOKEN` & `CLOUDFLARE_DEFAULT_IP`.
+
 
 ## Generated Sites
 
